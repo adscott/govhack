@@ -1,0 +1,16 @@
+%table
+  %tr
+    %th Name
+    %th Males
+    %th Females
+    %th Persons
+  - rows.each do |row|
+    %tr
+      %td
+        - if defined? slug
+          %a{href: "/#{slug}/#{row.id}"}=row.name
+        - else
+          =row.name
+      %td=row.males
+      %td=row.females
+      %td=row.persons
