@@ -11,26 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130525021931) do
+ActiveRecord::Schema.define(:version => 20130531121830) do
 
-  create_table "causes", :force => true do |t|
-    t.integer "section_id"
-    t.string  "name"
-    t.integer "males"
-    t.integer "females"
-    t.integer "persons"
-  end
-
-  create_table "chapters", :force => true do |t|
-    t.string  "name"
-    t.integer "males"
-    t.integer "females"
-    t.integer "persons"
-  end
-
-  create_table "sections", :force => true do |t|
-    t.integer "chapter_id"
-    t.string  "name"
+  create_table "data_points", :force => true do |t|
+    t.string  "category"
     t.integer "males"
     t.integer "females"
     t.integer "persons"

@@ -7,8 +7,8 @@
   - rows.each do |row|
     %tr
       %td
-        - if defined? slug
-          %a{href: "/#{slug}/#{row.id}"}=row.name
+        - if (row.children.length > 0)
+          %a{href: "/data_point/#{row.id}"}=row.name
         - else
           =row.name
       %td=row.males
