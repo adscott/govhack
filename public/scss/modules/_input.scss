@@ -1,0 +1,70 @@
+@mixin input-states($color) {
+  border-color: $color;
+  color: $color;
+  @include box-shadow(none);
+  &:focus {
+    @include box-shadow(none);
+  }
+}
+
+// Text fields
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  border: 2px solid scale-color($base, $lightness: 85%);
+  color: $base;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  padding: 8px 0 9px 10px;
+  text-indent: 1px;
+  @include border-radius(6px);
+  @include box-shadow(none);
+  @include placeholder-color(desaturate(scale-color($base, $lightness: 60%), 15%));
+  &:focus {
+    border-color: $firm;
+    @include box-shadow(none);
+  }
+  .control-group.error & {
+    @include input-states($danger);
+  }
+  .control-group.success & {
+    @include input-states($success);
+  }
+  .control-group.warning & {
+    @include input-states($warning);
+  }
+  .control-group.info & {
+    @include input-states($info);
+  }
+}
+
+// Disabled state -----------------
+input[disabled],
+input[readonly],
+textarea[disabled],
+textarea[readonly] {
+  background-color: scale-color($gray, $lightness: 80%);
+  border-color: transparent;
+  color: scale-color($gray, $lightness: 50%);
+  cursor: default;
+}
+
+// Text field grids -----------------
+input,
+textarea,
+.uneditable-input {
+  width: 192px;
+}

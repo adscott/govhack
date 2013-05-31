@@ -1,0 +1,29 @@
+// Progress bar
+.progress {
+  background: scale-color($base, $lightness: 90%);
+  border-radius: 32px;
+  height: 12px;
+  @include box-shadow(none);
+  @include drop-ie-gradient;
+  .bar {
+    background: $firm;
+    @include box-shadow(none !important);
+    @include drop-ie-gradient;
+  }
+  .bar-success {
+    background-color: $success;
+    @include drop-ie-gradient;
+  }
+  .bar-warning {
+    background-color: $warning;
+    @include drop-ie-gradient;
+  }
+  .bar-danger {
+    background-color: $danger;
+    @include drop-ie-gradient;
+  }
+  .bar-info {
+    background-color: $info;
+    @include drop-ie-gradient;
+  }
+}
