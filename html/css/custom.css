@@ -1,0 +1,145 @@
+@import url(http://fonts.googleapis.com/css?family=Luckiest+Guy);
+
+body{
+  padding: 0;
+}
+.face-off{
+  background-color: #efefef;
+  text-align: center;
+  padding: 40px 20px 0;
+}
+.face-off h1{
+  font-family: 'Luckiest Guy', cursive;
+  text-transform: uppercase;
+  font-size: 600%;
+  line-height: 1;
+}
+.competitor{
+  text-align: center;
+  margin-bottom: 60px;
+}
+.competitor .mascot{
+  width: 100%;
+}
+.vs{
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 400%;
+  color: #e74c3c;
+}
+.btn{
+  border-radius: 8px;
+  position: relative;
+  text-shadow: 0 -2px 0 rgba(0,0,0,0.2);
+}
+.btn:hover, 
+.btn:focus{
+  text-shadow: 0 -2px 0 rgba(0,0,0,0.1);
+}
+.btn.btn-caution{
+  background: #E67E22;
+}
+.btn.btn-xlarge {
+  font-family: 'Open Sans', sans-serif;
+  padding: 17px 21px;
+  font-size: 26.5px;
+  font-weight: 800;
+  box-shadow: 0 8px 0 0 #2c3e50;
+  text-shadow: 0 -2px 0 0 #2c3e50;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.btn-xlarge:hover,
+.btn-xlarge:focus{
+  box-shadow: 0 0 0 0 #2c3e50;
+}
+.btn-xlarge.btn-primary{
+  box-shadow: 0 8px 0 0 #16A085;
+  text-shadow: 0 -2px 0 0 #16A085;
+}
+.btn-xlarge.btn-primary:hover,
+.btn-xlarge.btn-primary:focus{
+  box-shadow: 0 0 0 0 #16A085;
+}
+.btn-xlarge.btn-info{
+  box-shadow: 0 8px 0 0 #2980B9;
+  text-shadow: 0 -2px 0 0 #2980B9;
+}
+.btn-xlarge.btn-info:hover,
+.btn-xlarge.btn-info:focus{
+  box-shadow: 0 0 0 0 #2980B9;
+}
+.btn-xlarge.btn-danger{
+  box-shadow: 0 8px 0 0 #C0392B;
+  text-shadow: 0 -2px 0 0 #C0392B;
+}
+.btn-xlarge.btn-danger:hover,
+.btn-xlarge.btn-danger:focus{
+  box-shadow: 0 0 0 0 #C0392B;
+}
+.btn-xlarge.btn-success{
+  box-shadow: 0 8px 0 0 #27AE60;
+  text-shadow: 0 -2px 0 0 #27AE60;
+}
+.btn-xlarge.btn-success:hover,
+.btn-xlarge.btn-success:focus{
+  box-shadow: 0 0 0 0 #27AE60;
+}
+.btn-xlarge.btn-warning{
+  box-shadow: 0 8px 0 0 #F39C12;
+  text-shadow: 0 -2px 0 0 #F39C12;
+}
+.btn-xlarge.btn-warning:hover,
+.btn-xlarge.btn-warning:focus{
+  box-shadow: 0 0 0 0 #F39C12;
+}
+.btn.btn-caution{
+  background: #E67E22;
+}
+.btn-xlarge.btn-caution{
+  box-shadow: 0 8px 0 0 #D35400;
+  text-shadow: 0 -2px 0 0 #D35400;
+}
+.btn-xlarge.btn-caution:hover,
+.btn-xlarge.btn-caution:focus{
+  background: #eb984e;
+  box-shadow: 0 0 0 0 #D35400;
+}
+.btn.btn-inverse{
+  background: #D35400;
+}
+.btn-xlarge.btn-inverse{
+  background: #9B59B6;
+  box-shadow: 0 8px 0 0 #8E44AD;
+  text-shadow: 0 -2px 0 0 #8E44AD;
+}
+.btn-xlarge.btn-inverse:hover,
+.btn-xlarge.btn-inverse:focus{
+  background: #af7ac5;
+  box-shadow: 0 0 0 0 #8E44AD;
+}
+.btn.btn-xlarge:hover, 
+.btn.btn-xlarge:focus{
+  outline: none;
+  bottom: -8px;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+
+
+}
+@media (max-width: 767px) {}
+@media (max-width: 480px) {}
+@media (max-width: 979px) {
+
+  .vs{  line-height: 290px;  }
+
+}
+@media (min-width: 980px) {
+
+  .vs{  line-height: 380px;  }
+
+}
+@media (min-width: 1200px) {
+
+  .vs{  line-height: 470px;  }
+
+}
