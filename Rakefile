@@ -43,7 +43,7 @@ def import_current_year(worksheet, year)
     .reject { |row| row[:indentation] < 0 }
     .reduce([]) do |memo, row|
       memo = memo.slice(0, row[:indentation]) || []
-      memo[row[:indentation]] = row[:data][:category]
+      memo[row[:indentation]] = row[:category]
       DataPoint.new(row[:data].merge({:category => memo.join(' > ')})).save
       memo
     end
@@ -55,15 +55,21 @@ def import_past_years(worksheet)
   rows
     .map do | row | row_to_hashes( row ) end
     .reject { | hash | hash.nil? }
-    .map do | hash | hash.merge( { indentation:hash[:row].format(0).indent_level-1}) end
+    .map do | hash |
+      h = hash.merge( { indentation:hash[:row].format(0).indent_level-1})
+      h.delete(:row)
+      h
+    end
     .reject { | hash | hash[:indentation] < 0 }
     .reduce([]) do | memo, row |
       memo = memo.slice(0, row[:indentation]) || []
       memo[row[:indentation]] = row[:category]
       shared_data = {category:memo.join(' > ')}
+
       row[:data].each do | dp |
         DataPoint.new(dp.merge(shared_data)).save
       end
+      memo
     end
 
 end
