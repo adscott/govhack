@@ -1,4 +1,11 @@
 .card
-    .title= card.title
-    %img{src:card.image}
-    .description= html_escape(card.description)
+  .title= card.title
+  %img{src:card.image}
+  .description= html_escape(card.description)
+
+  .data_points
+    %ul
+      - card.data_points.each do | dp |
+        %li
+          = "Year: #{dp.year}, Total: #{dp.persons}"
+
