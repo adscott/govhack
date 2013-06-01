@@ -10,6 +10,11 @@ $btn-border-radius: 8px;
 
 //TO-DO refactor original concept code using scss
 
+.vote-for-death{
+  background: $midnight-blue;
+  color: white;
+  padding: 20px 0
+}
 section{
   padding: 40px 20px;
 }
@@ -44,6 +49,8 @@ body{
   border-radius: 8px;
   position: relative;
   text-shadow: 0 -2px 0 rgba(0,0,0,0.2);
+  text-transform: uppercase;
+  font-weight: 800;
 }
 .btn:hover, 
 .btn:focus{
