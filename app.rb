@@ -13,7 +13,7 @@ end
 
 get '/year/:year' do | year |
   axes = {
-    year: DataPoint.select(:year).uniq.map do | dp |
+    year: DataPoint.select(:year).uniq.order(:year).map do | dp |
         {
             href: "/year/#{dp.year}",
             text: dp.year,
@@ -21,7 +21,7 @@ get '/year/:year' do | year |
         }
         end
   }
-  haml :index, locals: { data_points: DataPoint.top_level(year), axes:axes }
+  haml :index, locals: { data_points: DataPoint.top_level(year), axes:axes, current:year }
 end
 
 get '/card/:slug' do | slug |
