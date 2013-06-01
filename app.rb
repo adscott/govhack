@@ -23,9 +23,10 @@ get '/year/:year' do | year |
   haml :index, locals: { data_points: DataPoint.top_level(year), axes:axes }
 end
 
-get '/card/:id' do | id |
-  haml :card, locals: { card: Card.find(id) }
+get '/card/:slug' do | slug |
+  haml :card, locals: { card: Card.where(slug:slug}.first }
 end
+
 
 get '/data_point/:id' do |id|
   dp = DataPoint.find(id)
