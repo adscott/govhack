@@ -1,11 +1,7 @@
 // Footer
 footer {
-  background-color: desaturate(scale-color($base, $lightness: 91%), 15%);
-  color: desaturate(scale-color($base, $lightness: 66%), 22%);
   font-size: 15px;
-  padding: 0;
   a {
-    color: desaturate(scale-color($base, $lightness: 50%), 25%);
     font-weight: 700;
   }
   p {

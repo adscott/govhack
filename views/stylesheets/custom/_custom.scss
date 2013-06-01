@@ -1,17 +1,24 @@
 @import url(http://fonts.googleapis.com/css?family=Luckiest+Guy);
 
 @import "cards";
+@import "footer";
+@import "winner";
+@import "social";
 
 $btn-shadow-height: 8px;
 $btn-border-radius: 8px;
 
+//TO-DO refactor original concept code using scss
+
+section{
+  padding: 40px 20px;
+}
 body{
   padding: 0;
 }
 .face-off{
-  background-color: #efefef;
+  background-color: $clouds;
   text-align: center;
-  padding: 40px 20px;
 }
 .face-off h1{
   font-family: $headline-font;
@@ -31,6 +38,7 @@ body{
   font-family: $headline-font;
   font-size: 400%;
   color: #e74c3c;
+  line-height: 60px;
 }
 .btn{
   border-radius: 8px;
@@ -132,9 +140,13 @@ body{
 
 
 }
-@media (max-width: 767px) {}
-@media (max-width: 480px) {}
-@media (max-width: 979px) {
+@media (max-width: 767px) {
+}
+@media (max-width: 480px) {
+
+
+}
+@media (min-width: 979px) {
 
   .vs{  line-height: 290px;  }
 
