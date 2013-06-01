@@ -32,6 +32,7 @@ GEM
     journey (1.0.4)
     json (1.8.0)
     multi_json (1.7.3)
+    pg (0.15.1)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -80,6 +81,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  pg
   rake
   sass
   shotgun
