@@ -42,6 +42,19 @@ task :insert_data => [:establish_connection] do
   import_current_year(spreadsheet, year)
 end
 
+
+task :load_deathcards => [:establish_connection] do
+  # remove existing cards...
+  require 'yaml'
+  Dir.glob("data/deathcards/*.yaml") do | card_yaml |
+    card_data = YAML.load_file(card_yaml)
+    puts "Loaded #{card_data['title']}"
+    # load card into migration
+    # Check for unique slug?
+  end
+end
+
+
 task :show_all => [:establish_connection] do
   DataPoint.all.each { |d| puts d.category }
 end
