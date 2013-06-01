@@ -13,15 +13,9 @@ def row_to_hash(row, year)
   {:category => row[0], :males => row[2], :females => row[3], :persons => row[4], :year => year}
 end
 
-task :insert_data => [:establish_connection] do
-  DataPoint.delete_all
-
-  require 'spreadsheet'
-  path = './data/3303.0_1 underlying causes of death (australia) password removed.xls'
+def import_current_year(spreadsheet, year)
   rows = []
-  Spreadsheet.open(path).worksheet(1).each(11) { |row| rows << row }
-  year = 2011
-
+  spreadsheet.worksheet(1).each(11) { |row| rows << row }
   rows
     .reject { |row| row_to_hash(row, year)[:males].nil? }
     .map do |row|
@@ -37,6 +31,15 @@ task :insert_data => [:establish_connection] do
       DataPoint.new(row[:data].merge({:category => memo.join(' > ')})).save
       memo
     end
+end
+task :insert_data => [:establish_connection] do
+  DataPoint.delete_all
+
+  require 'spreadsheet'
+  path = './data/3303.0_1 underlying causes of death (australia) password removed.xls'
+  year = 2011
+  spreadsheet = Spreadsheet.open(path)
+  import_current_year(spreadsheet, year)
 end
 
 task :show_all => [:establish_connection] do
