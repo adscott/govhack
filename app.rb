@@ -13,7 +13,7 @@ end
 
 get '/year/:year' do | year |
   axes = {
-    year: DataPoint.select(:year).uniq.map do | dp |
+    year: DataPoint.select(:year).uniq.order(:year).map do | dp |
         {
             href: "/year/#{dp.year}",
             text: dp.year,
@@ -21,7 +21,7 @@ get '/year/:year' do | year |
         }
         end
   }
-  haml :index, locals: { data_points: DataPoint.top_level(year), axes:axes }
+  haml :index, locals: { data_points: DataPoint.top_level(year), axes:axes, current:year }
 end
 
 get '/card/:slug' do | slug |
@@ -48,7 +48,11 @@ get '/game' do
 end
 
 get '/card' do
-  haml :card, locals: { data_points: DataPoint.top_level }
+  haml :cards, locals: { cards: Card.find(:all) }
+end
+
+get '/compare/:firstslug/with/:secondslug' do | firstslug, secondslug |
+  haml :compare, locals: { first: Card.where(slug:firstslug).first, second: Card.where(slug:secondslug).first }
 end
 
 get '/stylesheets/:stylesheet.css' do |stylesheet|

@@ -1,0 +1,6 @@
+.description List of all cards
+
+%ul
+  - cards.each do | card |
+    %li
+      %a{:href => "./card/#{card.slug}"}=card.title

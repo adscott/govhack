@@ -19,6 +19,10 @@ Load data:
 
   `bundle exec rake insert_data`
 
+Load the deathcards (combine with above step?):
+
+  `bundle exec rake load_deathcards`
+
 Run the web interface:
 
   `bundle exec shotgun`
