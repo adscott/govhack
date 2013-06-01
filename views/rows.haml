@@ -1,16 +1,14 @@
-%table.table.table-hover.table-condensed
-  %tr
-    %th Name
-    %th Males
-    %th Females
-    %th Persons
-  - rows.each do |row|
+- if (rows.length > 0)
+  %table.table.table-hover.table-condensed
     %tr
-      %td
-        - if (row.children.length > 0)
+      %th Name
+      %th Males
+      %th Females
+      %th Persons
+    - rows.each do |row|
+      %tr
+        %td
           %a{href: "/data_point/#{row.id}"}=row.name
-        - else
-          =row.name
-      %td=row.males
-      %td=row.females
-      %td=row.persons
+        %td=row.males
+        %td=row.females
+        %td=row.persons
