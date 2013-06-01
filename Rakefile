@@ -118,14 +118,16 @@ task :create_yaml_from_images do
   puts "These cards will be dumped to /tmp"
   Dir.glob("public/images/cod/*.png") do | image |
     slug = File.basename(image).chomp(File.extname(image))
+    image_path = image.sub(/^public\//, '/')
 
     new_card = {
         "title" => slug,
         "description" => "",
         "slug" => slug,
         "category" => 0,
-        "image" => "/images/cod/#{image}"
+        "image" => image_path
     }
+
     puts "Creating new YAML file for #{slug} as #{new_card.to_yaml}"
     File.open("/tmp/#{slug}.yaml", 'w') {|f| f.write(new_card.to_yaml) }
   end
