@@ -1,13 +1,10 @@
 require 'sinatra'
 require 'haml'
 require 'active_record'
-require 'sqlite3'
-require 'logger'
 require './models/data_point'
 
-ActiveRecord::Base.logger = Logger.new('debug.log')
-ActiveRecord::Base.configurations = YAML::load(IO.read('db/config.yml'))
-ActiveRecord::Base.establish_connection('development')
+ActiveRecord::Base.configurations = YAML::load(IO.read('config/database.yml'))
+ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 
 get '/' do
   haml :index, locals: { data_points: DataPoint.top_level }
