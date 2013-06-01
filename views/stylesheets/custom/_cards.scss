@@ -1,0 +1,45 @@
+$card-padding: 40px;
+
+.cards{}
+
+.card{
+
+	header{
+
+		h2{
+			text-align: center;
+			font-family: $headline-font;
+			font-size: 400%;
+		}
+
+	}
+
+	background: $clouds;
+	max-width: 480px;
+	margin: 60px auto;
+	padding-bottom: $card-padding;
+	@include border-radius(8px);
+	@include box-shadow(0 6px 0 $silver);
+
+	header{
+		padding: $card-padding $card-padding 0;
+	}
+	.data{
+		padding: $card-padding;
+		margin: 0;
+		list-style: none;
+
+		.li{
+			background: red;
+		}
+	}
+	.btn{
+		display: block;
+		padding: $card-padding/2;
+		margin: 0 $card-padding 6px;
+		font-size: 140%;
+		font-family: $base-font;
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+}
