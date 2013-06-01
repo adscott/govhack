@@ -35,11 +35,11 @@ def row_to_hashes(row)
   }
 end
 
-def import_current_year(worksheet, year)
+def import_data(worksheet, &blk)
   rows = []
   worksheet.each(11) { | row | rows << row }
   rows
-    .map do | row | row_to_hash( row, year ) end
+    .map do | row | blk.call(row) end
     .reject { | hash | hash.nil? }
     .map do | hash |
       h = hash.merge( { indentation:hash[:row].format(0).indent_level-1})
@@ -57,32 +57,20 @@ def import_current_year(worksheet, year)
       end
       memo
     end
+end
+
+def import_current_year(worksheet, year)
+  import_data(worksheet) do | row |
+    row_to_hash(row,year)
+  end
 end
 
 def import_past_years(worksheet)
-  rows = []
-  worksheet.each(11) { | row | rows << row }
-  rows
-    .map do | row | row_to_hashes( row ) end
-    .reject { | hash | hash.nil? }
-    .map do | hash |
-      h = hash.merge( { indentation:hash[:row].format(0).indent_level-1})
-      h.delete(:row)
-      h
-    end
-    .reject { | hash | hash[:indentation] < 0 }
-    .reduce([]) do | memo, row |
-      memo = memo.slice(0, row[:indentation]) || []
-      memo[row[:indentation]] = row[:category]
-      shared_data = {category:memo.join(' > ')}
-
-      row[:data].each do | dp |
-        DataPoint.new(dp.merge(shared_data)).save
-      end
-      memo
-    end
-
+  import_data(worksheet) do | row |
+    row_to_hashes(row)
+  end
 end
+
 task :insert_data => [:establish_connection] do
   DataPoint.delete_all
 
