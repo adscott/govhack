@@ -5,6 +5,7 @@ task :establish_connection do
   require 'active_record'
   require 'logger'
   require './models/data_point'
+  require './models/card'
   ActiveRecord::Base.configurations = YAML::load(ERB.new(File.read('config/database.yml')).result)
   ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 end
@@ -44,10 +45,11 @@ end
 
 
 task :load_deathcards => [:establish_connection] do
-  # remove existing cards...
+  Card.delete_all
   require 'yaml'
   Dir.glob("data/deathcards/*.yaml") do | card_yaml |
     card_data = YAML.load_file(card_yaml)
+    Card.new(card_data).save
     puts "Loaded #{card_data['title']}"
     # load card into migration
     # Check for unique slug?
