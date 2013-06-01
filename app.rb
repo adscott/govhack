@@ -8,7 +8,14 @@ ActiveRecord::Base.configurations = YAML::load(ERB.new(File.read('config/databas
 ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 
 get '/' do
-  redirect to "/year/2011"
+  card1 = Card.first(:offset => rand(Card.count))
+  card2 = Card.first(:offset => rand(Card.count))
+
+  if card1.id == card2.id
+    redirect to '/'
+  else
+    redirect to "/compare/#{card1.slug}/with/#{card2.slug}"
+  end
 end
 
 get '/search' do
