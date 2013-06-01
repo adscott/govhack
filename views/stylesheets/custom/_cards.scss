@@ -22,12 +22,18 @@ $card-padding: 40px;
 	@include box-shadow(0 6px 0 $silver);
 
 	header{
-		padding: $card-padding $card-padding 0;
-	}
-	.data{
 		padding: $card-padding;
-		margin: 0;
-		list-style: none;
+	}
+
+	.data{
+
+		padding: $card-padding/2 $card-padding;
+
+		.ul{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
 
 		.li{
 			background: red;

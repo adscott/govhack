@@ -3,9 +3,15 @@
     %h2.title= card.title
     %img{src:card.image}
     %p.description= html_escape(card.description)
-  %ul.data
-    %li.total 9,000
-    %li.gender-totals
-      .men 4,000
-      .women 6,000
+  .data
+    %ul
+      %li.total 9,000
+      %li.gender-totals
+        .men 4,000
+        .women 6,000
+  .data-points
+    %ul
+      - card.data_points.each do | dp |
+        %li
+          = "Year: #{dp.year}, Total: #{dp.persons}"
   %a.btn.btn-xlarge.btn-success{href:'#',} more info

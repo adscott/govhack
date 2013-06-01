@@ -1,7 +1,12 @@
-%table
-  %tr
-    %td Year
+.axis
+  %ul.nav.nav-tabs{data:{current:current}}
+    %li.disabled
+      %a Year:
     - axes[:year].each do | value|
-      %td
-        %a{href:value[:href]}=value[:text]
+      - if (current.to_s == value[:value].to_s)
+        %li.active
+          %a=value[:text]
+      - else
+        %li{data:{value:value[:value]}}
+          %a{href:value[:href]}=value[:text]
 
