@@ -65,7 +65,7 @@ body.vjs-full-window {
     bottom: 4em;
     left: 1em;
     right: 1em;
-    font-family: $base-font-family;
+    font-family: $base-font;
   }
   .vjs-text-track {
     display: none;
@@ -311,7 +311,7 @@ body.vjs-full-window {
   height: 20px;
   width: 50px;
   top: 16px;
-  font: 300 13px $base-font-family;
+  font: 300 13px $base-font;
 }
 
 .vjs-current-time {
