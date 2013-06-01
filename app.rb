@@ -16,3 +16,7 @@ end
 get '/data_point/:id' do |id|
   haml :data_point, locals: { data_point: DataPoint.find(id) }
 end
+
+get '/game' do
+  haml :game, locals: { data_points: DataPoint.top_level }
+end
