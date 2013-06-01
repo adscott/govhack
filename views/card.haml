@@ -1,23 +1,25 @@
 .card
   %header
-    %h2.title= card.title
+    %h1= html_escape(card.data_points.last.persons)
+    %h2.title= " persons #{card.title}"
     %img{src:card.image}
     %p.description= html_escape(card.description)
   .data
     .numbers
-      .total 
-        %label total
-        %h3= html_escape(card.data_points.last.persons)
-      .total.by-gender
-        .women
-          %label women
-          %h3= html_escape(card.data_points.last.females)
-        .men 
-          %label men
-          %h3= html_escape(card.data_points.last.males)
   .charts
-    %ul
-      - card.data_points.each do | dp |
-        %li
-          = "Year: #{dp.year}, Total: #{dp.persons}"
+    %table.table.table-striped
+      %thead
+        %tr
+          %td year
+          %td.center males
+          %td.center females
+          %td.center total
+      %tbody
+        - card.data_points.reverse.each do | dp |
+          %tr
+            %td= dp.year
+            %td.center= dp.males
+            %td.center= dp.females
+            %td.center= dp.persons
+    %p Explanation of data variance.
   %a.btn.btn-xlarge.btn-info{href:'#',} more info

@@ -15,6 +15,14 @@ $card-padding: 40px;
 	
 	header {
 		padding: $card-padding;
+		h1{
+			text-align: center;
+			font-family: $headline-font;
+			font-size: 800%;
+			line-height: 0.9em;
+			color: $alizarin;
+			font-weight: normal;
+		}
 		h2{
 			text-align: center;
 			font-family: $headline-font;
@@ -23,34 +31,11 @@ $card-padding: 40px;
 			font-weight: normal;
 		}
 	}
-	.numbers {
+	>div{
+		padding: 0 $card-padding;
+	}
+	.center{
 		text-align: center;
-		
-		.total {
-			border-radius: 8px;
-			background: $clouds;
-			padding: 12px;
-			display: inline-block;
-			margin-right: 12px;
-			@include box-sizing;
-		}
-		.by-gender{
-			margin: 0;
-			padding: 12px;
-			
-			div{
-				display: inline-block;
-				padding: 0 12px;
-			}
-		}
-		label{
-			text-transform: uppercase;
-		}
-		h3{
-			font-size: 250%;
-			font-family: $headline-font;
-			font-weight: normal;
-		}
 	}
 	.btn {
 		display: block;
