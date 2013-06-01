@@ -6,9 +6,14 @@ $(function () {
 });
 
 $(document).ready(function() {
-    // Todo list
-    $(".todo li").click(function() {
-        $(this).toggleClass("todo-done");
+    // hide show data-table
+    $('#show-data').click(function(){
+        $('.charts').removeClass('hidden')
+        $('#show-data').remove()
+        $('html, body').animate({
+            scrollTop: $(".charts").offset().top
+        }, 500);
+        return false;
     });
 
     // Init tooltips
@@ -48,4 +53,5 @@ $(document).ready(function() {
     });
 
 });
+
 

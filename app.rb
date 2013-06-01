@@ -14,7 +14,7 @@ get '/' do
   if card1.id == card2.id
     redirect to '/'
   else
-    redirect to "/compare/#{card1.slug}/with/#{card2.slug}"
+    redirect to "/compare/#{card1.slug}/vs/#{card2.slug}"
   end
 end
 
@@ -63,7 +63,7 @@ get '/card' do
   haml :cards, locals: { cards: Card.find(:all) }
 end
 
-get '/compare/:firstslug/with/:secondslug' do | firstslug, secondslug |
+get '/compare/:firstslug/vs/:secondslug' do | firstslug, secondslug |
   haml :compare, locals: { first: Card.where(slug:firstslug).first, second: Card.where(slug:secondslug).first }
 end
 

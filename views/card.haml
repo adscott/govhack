@@ -1,12 +1,11 @@
 .card
   %header
-    %h1= html_escape(card.data_points.last.persons)
-    %h2.title= " persons #{card.title}"
+    %h1= "#{card.data_points.last.persons}"
+    %h2.title= " persons died from #{card.title}"
+  .content
     %img{src:card.image}
-    %p.description= html_escape(card.description)
-  .data
-    .numbers
-  .charts
+    %p.description= "#{card.description}"
+  .charts.hidden
     %table.table.table-striped
       %thead
         %tr
@@ -22,4 +21,4 @@
             %td.center= dp.females
             %td.center= dp.persons
     %p Explanation of data variance.
-  %a.btn.btn-xlarge.btn-info{href:'#',} more info
+  %a#show-data.btn.btn-xlarge.btn-info{href:'#',} show data
