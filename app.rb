@@ -3,7 +3,7 @@ require 'haml'
 require 'active_record'
 require './models/data_point'
 
-ActiveRecord::Base.configurations = YAML::load(IO.read('config/database.yml'))
+ActiveRecord::Base.configurations = YAML::load(ERB.new(File.read('config/database.yml')).result)
 ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 
 get '/' do

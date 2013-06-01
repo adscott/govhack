@@ -5,7 +5,7 @@ task :establish_connection do
   require 'active_record'
   require 'logger'
   require './models/data_point'
-  ActiveRecord::Base.configurations = YAML::load(IO.read('config/database.yml'))
+  ActiveRecord::Base.configurations = YAML::load(ERB.new(File.read('config/database.yml')).result)
   ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 end
 
