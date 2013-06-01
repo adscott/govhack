@@ -1,6 +1,8 @@
 require 'standalone_migrations'
 StandaloneMigrations::Tasks.load_tasks
 
+task :default => [:'db:migrate', :insert_data, :load_deathcards]
+
 task :establish_connection do
   require 'active_record'
   require 'logger'
@@ -10,13 +12,33 @@ task :establish_connection do
   ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 end
 
+def number_or_nil(input)
+  if input.class < Numeric
+    input
+  else
+    nil
+  end
+end
+
 def row_to_hash(row, year)
   return nil if row[2].nil?
   {
     row: row,
     category:row[0],
     data: [
-      {:males => row[2], :females => row[3], :persons => row[4], :year => year}
+      {
+        :males => row[2],
+        :females => row[3],
+        :persons => row[4],
+        :standard_death_rate_males    => number_or_nil(row[6]),
+        :standard_death_rate_females  => number_or_nil(row[7]),
+        :standard_death_rate_persons  => number_or_nil(row[8]),
+        :potential_years_lost_males   => number_or_nil(row[10]),
+        :potential_years_lost_females => number_or_nil(row[11]),
+        :potential_years_lost_persons => number_or_nil(row[12]),
+        :has_standard_death_rate => true,
+        :has_potential_years_lost => true,
+        :year => year}
     ]
   }
 end

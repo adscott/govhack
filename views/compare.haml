@@ -1,1 +1,35 @@
-%p= "Comparing #{first.title} with #{second.title}"
+%p = "Comparing #{first.title} with #{second.title}"
+
+.card
+  %header
+    %h2.title= first.title
+    %img{src:first.image}
+    %p.description= html_escape(first.description)
+  .data
+    %ul
+      %li.total 9,000
+      %li.gender-totals
+        .men 4,000
+        .women 6,000
+  .data-points
+    %ul
+      - first.data_points.each do | dp |
+        %li
+          = "Year: #{dp.year}, Total: #{dp.persons}"
+
+.card
+  %header
+    %h2.title= second.title
+    %img{src:second.image}
+    %p.description= html_escape(second.description)
+  .data
+    %ul
+      %li.total 9,000
+      %li.gender-totals
+        .men 4,000
+        .women 6,000
+  .data-points
+    %ul
+      - second.data_points.each do | dp |
+        %li
+          = "Year: #{dp.year}, Total: #{dp.persons}"
