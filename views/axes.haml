@@ -1,0 +1,7 @@
+%table
+  %tr
+    %td Year
+    - axes[:year].each do | value|
+      %td
+        %a{href:value[:href]}=value[:text]
+
