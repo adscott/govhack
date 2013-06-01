@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531121830) do
+ActiveRecord::Schema.define(:version => 20130601005039) do
 
   create_table "data_points", :force => true do |t|
     t.string  "category"
     t.integer "males"
     t.integer "females"
     t.integer "persons"
+    t.integer "year"
   end
 
 end

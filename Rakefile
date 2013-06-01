@@ -9,12 +9,8 @@ task :establish_connection do
   ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 end
 
-CHAPTER_INDENT_LEVEL = 1
-SECTION_INDENT_LEVEL = 2
-CAUSE_INDENT_LEVEL = 3
-
-def row_to_hash(row)
-  {:category => row[0], :males => row[2], :females => row[3], :persons => row[4]}
+def row_to_hash(row, year)
+  {:category => row[0], :males => row[2], :females => row[3], :persons => row[4], :year => year}
 end
 
 task :insert_data => [:establish_connection] do
@@ -24,10 +20,16 @@ task :insert_data => [:establish_connection] do
   path = './data/3303.0_1 underlying causes of death (australia) password removed.xls'
   rows = []
   Spreadsheet.open(path).worksheet(1).each(11) { |row| rows << row }
+  year = 2013
 
   rows
-    .reject { |row| row_to_hash(row)[:males].nil? }
-    .map { |row| {indentation: row.format(0).indent_level - 1, data: row_to_hash(row)} }
+    .reject { |row| row_to_hash(row, year)[:males].nil? }
+    .map do |row|
+      {
+        indentation: row.format(0).indent_level - 1,
+        data: row_to_hash(row, year)
+      }
+    end
     .reject { |row| row[:indentation] < 0 }
     .reduce([]) do |memo, row|
       memo = memo.slice(0, row[:indentation]) || []
