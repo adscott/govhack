@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601022733) do
+ActiveRecord::Schema.define(:version => 20130601060606) do
 
   create_table "cards", :force => true do |t|
     t.text "title"
@@ -22,11 +22,19 @@ ActiveRecord::Schema.define(:version => 20130601022733) do
   end
 
   create_table "data_points", :force => true do |t|
-    t.text    "category", :limit => 4096
+    t.text    "category",                     :limit => 4096
     t.integer "males"
     t.integer "females"
     t.integer "persons"
     t.integer "year"
+    t.text    "standard_death_rate_males"
+    t.text    "standard_death_rate_females"
+    t.text    "standard_death_rate_persons"
+    t.text    "potential_years_lost_males"
+    t.text    "potential_years_lost_females"
+    t.text    "potential_years_lost_persons"
+    t.boolean "has_standard_death_rate",                      :default => false
+    t.boolean "has_potential_years_lost",                     :default => false
   end
 
 end

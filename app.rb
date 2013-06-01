@@ -11,6 +11,11 @@ get '/' do
   redirect to "/year/2011"
 end
 
+get '/search' do
+  term = params[:term]
+  haml :search_results, locals: {data_points: DataPoint.where(year: 2011).select { |dp| dp.name.downcase.include? term.downcase }}
+end
+
 get '/year/:year' do | year |
   axes = {
     year: DataPoint.select(:year).uniq.order(:year).map do | dp |
