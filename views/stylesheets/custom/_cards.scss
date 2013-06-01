@@ -47,3 +47,11 @@ $card-padding: 40px;
 		text-transform: uppercase;
 	}
 }
+@media all and (max-width: 480px){
+	.card-single{
+		margin: 20px;
+	}
+	.card{
+		margin: auto;
+	}
+}
