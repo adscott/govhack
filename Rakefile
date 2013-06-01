@@ -119,9 +119,10 @@ task :create_yaml_from_images do
   Dir.glob("public/images/cod/*.png") do | image |
     slug = File.basename(image).chomp(File.extname(image))
     image_path = image.sub(/^public\//, '/')
+    title = slug.gsub(/-/, ' ').split(' ').map(&:capitalize).join(' ')
 
     new_card = {
-        "title" => slug,
+        "title" => title,
         "description" => "",
         "slug" => slug,
         "category" => 0,
