@@ -102,4 +102,23 @@ task :show_all => [:establish_connection] do
   DataPoint.all.each { |d| puts d.category }
 end
 
+#"title"=>"Sharks!", "description"=>"Sharks are really cool, and this description can be multi-line", "slug"=>"sharks-and-stuff", "image"=>"deathcards/sharks.png", "category"=>123}
+
+task :create_yaml_from_images do
+  puts "These cards will be dumped to /tmp"
+  Dir.glob("public/images/cod/*.png") do | image |
+    slug = File.basename(image).chomp(File.extname(image))
+
+    new_card = {
+        "title" => slug,
+        "description" => "",
+        "slug" => slug,
+        "category" => 0,
+        "image" => "/images/cod/#{image}"
+    }
+    puts "Creating new YAML file for #{slug} as #{new_card.to_yaml}"
+    File.open("/tmp/#{slug}.yaml", 'w') {|f| f.write(new_card.to_yaml) }
+  end
+end
+
 
