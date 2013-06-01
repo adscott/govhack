@@ -1,38 +1,30 @@
-%table.table.table-hover.table-condensed
-  %tr
-    %th Name
-    %th Males
-    %th Females
-    %th Persons
-    - if (rows.any?{ | r| r.has_standard_death_rate})
-      %th SDR Males
-      %th SDR Females
-      %th SDR Persons
-    - if (rows.any?{ | r| r.has_potential_years_lost})
-      %th Years Lost: Males
-      %th Years Lost: Females
-      %th Years Load: Persons
-
-  - rows.each do |row|
+- if (rows.length > 0)
+  %table.table.table-hover.table-condensed
     %tr
       %th Name
       %th Males
       %th Females
       %th Persons
+      - if (rows.any?{ | r| r.has_standard_death_rate})
+        %th SDR Males
+        %th SDR Females
+        %th SDR Persons
+      - if (rows.any?{ | r| r.has_potential_years_lost})
+        %th Years Lost: Males
+        %th Years Lost: Females
+        %th Years Load: Persons
     - rows.each do |row|
       %tr
         %td
           %a{href: "/data_point/#{row.id}"}=row.name
-        - else
-          =row.name
-      %td=row.males
-      %td=row.females
-      %td=row.persons
-      - if (row.has_standard_death_rate)
-        %td=row.standard_death_rate_males
-        %td=row.standard_death_rate_females
-        %td=row.standard_death_rate_persons
-      - if (row.has_potential_years_lost)
-        %td=row.potential_years_lost_males
-        %td=row.potential_years_lost_females
-        %td=row.potential_years_lost_persons
+        %td=row.males
+        %td=row.females
+        %td=row.persons
+        - if (row.has_standard_death_rate)
+          %td=row.standard_death_rate_males
+          %td=row.standard_death_rate_females
+          %td=row.standard_death_rate_persons
+        - if (row.has_potential_years_lost)
+          %td=row.potential_years_lost_males
+          %td=row.potential_years_lost_females
+          %td=row.potential_years_lost_persons
