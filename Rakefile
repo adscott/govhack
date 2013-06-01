@@ -1,6 +1,8 @@
 require 'standalone_migrations'
 StandaloneMigrations::Tasks.load_tasks
 
+task :default => [:'db:migrate', :insert_data, :load_deathcards]
+
 task :establish_connection do
   require 'active_record'
   require 'logger'
