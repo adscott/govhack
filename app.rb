@@ -46,7 +46,7 @@ get '/game' do
 end
 
 get '/card' do
-  haml :card, locals: { data_points: DataPoint.top_level }
+  haml :cards, locals: { cards: Card.find(:all) }
 end
 
 get '/stylesheets/:stylesheet.css' do |stylesheet|
