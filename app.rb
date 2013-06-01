@@ -7,6 +7,10 @@ ActiveRecord::Base.configurations = YAML::load(ERB.new(File.read('config/databas
 ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 
 get '/' do
+  redirect to "/year/2011"
+end
+
+get '/year/:year' do | year |
   axes = {
     year: DataPoint.select(:year).uniq.map do | dp |
         {
@@ -15,9 +19,8 @@ get '/' do
         }
         end
   }
-  haml :index, locals: { data_points: DataPoint.top_level(2013), axes:axes }
+  haml :index, locals: { data_points: DataPoint.top_level(year), axes:axes }
 end
-
 get '/data_point/:id' do |id|
   dp = DataPoint.find(id)
   axes = {

@@ -20,7 +20,7 @@ task :insert_data => [:establish_connection] do
   path = './data/3303.0_1 underlying causes of death (australia) password removed.xls'
   rows = []
   Spreadsheet.open(path).worksheet(1).each(11) { |row| rows << row }
-  year = 2013
+  year = 2011
 
   rows
     .reject { |row| row_to_hash(row, year)[:males].nil? }
