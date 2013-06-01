@@ -1,48 +1,61 @@
 $card-padding: 40px;
-
+// Body Class
+.card-single{
+	background: $green-sea;
+}
 .cards{}
 
 .card{
-
-	header{
-
-		h2{
-			text-align: center;
-			font-family: $headline-font;
-			font-size: 400%;
-		}
-
-	}
-
-	background: $clouds;
+	background: white;
 	max-width: 480px;
 	margin: 60px auto;
 	padding-bottom: $card-padding;
 	@include border-radius(8px);
-	@include box-shadow(0 6px 0 $silver);
-
-	header{
+	@include box-shadow(0 6px 0 $concrete);
+	
+	header {
 		padding: $card-padding;
+		h2{
+			text-align: center;
+			font-family: $headline-font;
+			font-size: 400%;
+			color: $alizarin;
+			font-weight: normal;
+		}
 	}
-
-	.data{
-
-		padding: $card-padding/2 $card-padding;
-
-		.ul{
-			padding: 0;
+	.numbers {
+		text-align: center;
+		
+		.total {
+			border-radius: 8px;
+			background: $clouds;
+			padding: 12px;
+			display: inline-block;
+			margin-right: 12px;
+			@include box-sizing;
+		}
+		.by-gender{
 			margin: 0;
-			list-style: none;
+			padding: 12px;
+			
+			div{
+				display: inline-block;
+				padding: 0 12px;
+			}
 		}
-
-		.li{
-			background: red;
+		label{
+			text-transform: uppercase;
+		}
+		h3{
+			font-size: 250%;
+			font-family: $headline-font;
+			font-weight: normal;
 		}
 	}
-	.btn{
+	.btn {
 		display: block;
 		padding: $card-padding/2;
-		margin: 0 $card-padding 6px;
+		margin: $card-padding $card-padding 6px;
 		font-size: 140%;
 		font-family: $base-font;
 		font-weight: 800;

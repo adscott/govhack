@@ -30,7 +30,7 @@ get '/year/:year' do | year |
 end
 
 get '/card/:slug' do | slug |
-  haml :card, locals: { card: Card.where(slug:slug).first }
+  haml :card, locals: { card: Card.where(slug:slug).first, body_class: 'card-single' }
 end
 
 
