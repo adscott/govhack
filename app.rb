@@ -20,3 +20,11 @@ end
 get '/game' do
   haml :game, locals: { data_points: DataPoint.top_level }
 end
+
+get '/card' do
+  haml :card, locals: { data_points: DataPoint.top_level }
+end
+
+get '/stylesheets/:stylesheet.css' do |stylesheet|
+  scss :"stylesheets/#{stylesheet}"
+end
