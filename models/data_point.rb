@@ -8,8 +8,7 @@ class DataPoint < ActiveRecord::Base
 
   def children
     DataPoint
-      .all
-      .select { |point| point.category.starts_with? category }
+      .where('category LIKE ?', "#{category}#{SEPARATOR}%")
       .select { |point| point.category.split(SEPARATOR).length == (category.split(SEPARATOR).length + 1) }
   end
 
