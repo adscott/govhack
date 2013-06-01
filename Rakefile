@@ -14,9 +14,24 @@ def row_to_hash(row, year)
   {:category => row[0], :males => row[2], :females => row[3], :persons => row[4], :year => year}
 end
 
-def import_current_year(spreadsheet, year)
+def row_to_hashes(row)
+  return nil if( row[2].nil?)
+  {
+    row:row,
+    category:row[0],
+    data: (2002..2010).map do | year |
+      index = year - 2002
+      columns_per_year=4
+      offset = index * columns_per_year + 2
+
+      {:males => row[offset], :females => row[offset+1], :persons => row[offset+2], :year => year}
+    end
+  }
+end
+
+def import_current_year(worksheet, year)
   rows = []
-  spreadsheet.worksheet(1).each(11) { |row| rows << row }
+  worksheet.each(11) { |row| rows << row }
   rows
     .reject { |row| row_to_hash(row, year)[:males].nil? }
     .map do |row|
@@ -28,10 +43,35 @@ def import_current_year(spreadsheet, year)
     .reject { |row| row[:indentation] < 0 }
     .reduce([]) do |memo, row|
       memo = memo.slice(0, row[:indentation]) || []
-      memo[row[:indentation]] = row[:data][:category]
+      memo[row[:indentation]] = row[:category]
       DataPoint.new(row[:data].merge({:category => memo.join(' > ')})).save
       memo
     end
+end
+
+def import_past_years(worksheet)
+  rows = []
+  worksheet.each(11) { | row | rows << row }
+  rows
+    .map do | row | row_to_hashes( row ) end
+    .reject { | hash | hash.nil? }
+    .map do | hash |
+      h = hash.merge( { indentation:hash[:row].format(0).indent_level-1})
+      h.delete(:row)
+      h
+    end
+    .reject { | hash | hash[:indentation] < 0 }
+    .reduce([]) do | memo, row |
+      memo = memo.slice(0, row[:indentation]) || []
+      memo[row[:indentation]] = row[:category]
+      shared_data = {category:memo.join(' > ')}
+
+      row[:data].each do | dp |
+        DataPoint.new(dp.merge(shared_data)).save
+      end
+      memo
+    end
+
 end
 task :insert_data => [:establish_connection] do
   DataPoint.delete_all
@@ -40,7 +80,8 @@ task :insert_data => [:establish_connection] do
   path = './data/3303.0_1 underlying causes of death (australia) password removed.xls'
   year = 2011
   spreadsheet = Spreadsheet.open(path)
-  import_current_year(spreadsheet, year)
+  import_current_year(spreadsheet.worksheet(1), year)
+  import_past_years(spreadsheet.worksheet(2))
 end
 
 

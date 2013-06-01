@@ -16,7 +16,8 @@ get '/year/:year' do | year |
     year: DataPoint.select(:year).uniq.map do | dp |
         {
             href: "/year/#{dp.year}",
-            text: dp.year
+            text: dp.year,
+            value: dp.year
         }
         end
   }
@@ -34,7 +35,8 @@ get '/data_point/:id' do |id|
     year: DataPoint.where(:category => dp.category).map do | dp |
             {
                 href: "/data_point/#{dp.id}",
-                text: dp.year
+                text: dp.year,
+                value: dp.year
             }
         end
   }
