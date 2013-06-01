@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601013602) do
+ActiveRecord::Schema.define(:version => 20130601021446) do
+
+  create_table "cards", :force => true do |t|
+    t.text "title"
+    t.text "description", :limit => 4096
+    t.text "image"
+    t.text "category"
+  end
 
   create_table "data_points", :force => true do |t|
     t.text    "category", :limit => 4096
