@@ -1,10 +1,10 @@
-/ %header.vote-for-death.clearfix
-/   .container
-/     .row
-/       .span8
-/         %h4 This project was created for GovHack Sydney 2013
-/       .span3.offset1
-/         %a.btn.btn-block.btn-large.btn-info vote for us
+%header.vote-for-death.clearfix
+  .container
+    .row
+      .span8
+        %h4 This project was created for GovHack Sydney 2013
+      .span3.offset1
+        %a.btn.btn-block.btn-large.btn-info{href: 'http://www.govhack.org/2013-prizes/'} vote for us
 
 %section.face-off
   .container
@@ -33,22 +33,24 @@
   $(document).ready( function() {
 
   var barChart = new Rickshaw.Graph( {
-          element: document.querySelector("#chart1"),
-          renderer: 'bar',
-          series: [ {
-              color: '#1abc9c',
-              data: #{first_json},
-              name: "#{first.title}"
-          },
-          {
-              color: '#f1c40f',
-              data: #{second_json},
-              name: "#{second.title}"}]});
+      element: document.querySelector("#chart1"),
+      renderer: 'bar',
+      series: [ {
+          color: '#3498db',
+          data: #{first_json},
+          name: "#{first.title}"
+      },
+      {
+          color: '#1abc9c',
+          data: #{second_json},
+          name: "#{second.title}"
+      }
+    ]
+  });
 
   var y_axis = new Rickshaw.Graph.Axis.Y( {
     graph: barChart,
     orientation: 'left',
-    tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
     element: document.getElementById('y_axis'),
   } );
 
