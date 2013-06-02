@@ -63,8 +63,14 @@
   	legend: legend
   } );
 
-  new Rickshaw.Graph.HoverDetail( {
-  	graph: barChart
+  //new Rickshaw.Graph.HoverDetail( {
+  //	graph: barChart
+  //} );
+
+  var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+      graph: barChart,
+      xFormatter: function(x) { return x },
+      yFormatter: function(y) { return Math.floor(y) + " deaths" }
   } );
 
   barChart.render();
