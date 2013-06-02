@@ -27,6 +27,30 @@
       .span6.offset3
         %button.fight.btn.btn-block.btn-xlarge.btn-danger
           Start Deathmatch
+
+:javascript
+  var ajaxGraph = new Rickshaw.Graph.Ajax( {
+
+  	element: document.getElementById("chart"),
+  	width: 400,
+  	height: 200,
+  	renderer: 'line',
+  	dataURL: 'data/data.json',
+  	onData: function(d) { d[0].data[0].y = 80; return d },
+  	series: [
+  		{
+  			name: 'New York',
+  			color: '#c05020',
+  		}, {
+  			name: 'London',
+  			color: '#30c020',
+  		}, {
+  			name: 'Tokyo',
+  			color: '#6060c0'
+  		}
+  	]
+  } );
+
 %section.winner
   .container
     .row
