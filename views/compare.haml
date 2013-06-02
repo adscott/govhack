@@ -75,7 +75,7 @@
     - sorted = [first, second].sort { |x,y| y.data_points.last.persons <=> x.data_points.last.persons }
     .row
       %h1.winner= "#{sorted[0].data_points.last.persons} people killed by #{sorted[0].title.downcase}"
-      %h2.loser= "while only #{sorted[1].data_points.last.persons} killed by #{sorted[1].title.downcase} last year."
+      %h2.loser= "while only #{sorted[1].data_points.last.persons} killed by #{sorted[1].title.downcase} in 2011."
     - unless first.data_points.last.potential_years_lost_persons.nil? || second.data_points.last.potential_years_lost_persons.nil?
       .row.year-comparison
         .span12
