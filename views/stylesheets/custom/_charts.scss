@@ -1,0 +1,20 @@
+#chart_container {
+  position: relative;
+}
+#chart1 {
+  position: relative;
+  left: 0;
+}
+#y_axis {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40px;
+  width: 40px;
+}
+#x_axis {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  height: 20px;
+}

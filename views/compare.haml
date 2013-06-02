@@ -4,7 +4,7 @@
       .span8
         %h4 This project was created for GovHack Sydney 2013
       .span3.offset1
-        %a.btn.btn-block.btn-large.btn-info vote for us
+        %a.btn.btn-block.btn-large.btn-info{href: 'http://www.govhack.org/2013-prizes/'} vote for us
 
 %section.face-off
   .container
@@ -33,39 +33,32 @@
   $(document).ready( function() {
 
   var barChart = new Rickshaw.Graph( {
-          element: document.querySelector("#chart1"),
-          renderer: 'bar',
-          series: [ {
-              color: 'steelblue',
-              data: #{first_json},
-              name: "#{first.title}"
-          },
-          {
-              color: 'lightblue',
-              data: #{second_json},
-              name: "#{second.title}"}]});
-
-  var yAxis = new Rickshaw.Graph.Axis.Y({
-    graph: barChart
+      element: document.querySelector("#chart1"),
+      renderer: 'bar',
+      series: [ {
+          color: '#3498db',
+          data: #{first_json},
+          name: "#{first.title}"
+      },
+      {
+          color: '#1abc9c',
+          data: #{second_json},
+          name: "#{second.title}"
+      }
+    ]
   });
 
-  var xAxis = new Rickshaw.Graph.Axis.X({
-    graph: barChart
-  });
-
-  var legend = new Rickshaw.Graph.Legend({
-      graph: barChart,
-      element: document.querySelector('#legend')
-  });
-
-  var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
-  	graph: barChart,
-  	legend: legend
+  var y_axis = new Rickshaw.Graph.Axis.Y( {
+    graph: barChart,
+    orientation: 'left',
+    element: document.getElementById('y_axis'),
   } );
 
-  //new Rickshaw.Graph.HoverDetail( {
-  //	graph: barChart
-  //} );
+  var x_axis = new Rickshaw.Graph.Axis.X( {
+    graph: barChart,
+    orientation: 'bottom',
+    element: document.getElementById('x_axis'),
+  } );
 
   var hoverDetail = new Rickshaw.Graph.HoverDetail( {
       graph: barChart,
@@ -100,17 +93,20 @@
         .span12.center.data-note
           %small
             %a{href: 'http://en.wikipedia.org/wiki/Years_of_potential_life_lost'} Learn more about potential life lost calculation
+    / .row
+    /   .span8.offset2.center
+    /     .btn-group
+    /       %a.btn.btn-large.active{:href =>'#chart1', :'data-toggle' => 'tab'} Chart 1
+    /       %a.btn.btn-large{:href =>'#chart2', :'data-toggle' => 'tab'} Chart 2
+    /       %a.btn.btn-large{:href =>'#chart3', :'data-toggle' => 'tab'} Chart 3
     .row
-      .span8.offset2.center
-        .btn-group
-          %a.btn.btn-large.active{:href =>'#chart1', :'data-toggle' => 'tab'} Chart 1
-          %a.btn.btn-large{:href =>'#chart2', :'data-toggle' => 'tab'} Chart 2
-          %a.btn.btn-large{:href =>'#chart3', :'data-toggle' => 'tab'} Chart 3
-    .row
-      .span8.offset2
-        .charts
-          #legend
+      .span10.offset1
+        #chart_container.charts
+          #y_axis
+          #x_axis
           #chart1.chart
+          #legend
+
     .row
       .span6.offset3
         %a.btn.btn-block.btn-xlarge.btn-warning{href: '/'}
@@ -128,9 +124,16 @@
 %footer
   .container
     .row
-      .span8
+      .span5
+        %h3 About
+        %p This application has been built using <a href="http://www.sinatrarb.com/">Sinatra</a>, <a href="http://haml.info/">HAML</a>, <a href="http://jquery.com/">JQuery</a>, <a href="http://d3js.org/">D3</a>, <a href="http://code.shutterstock.com/rickshaw/">Rickshaw</a> and <a href="http://designmodo.github.io/Flat-UI/">FlatUI</a>. The source code for the site can be found on <a href="https://github.com/adscott/govhack/">GitHub</a>. Hosting for the <a href="http://deathmatch.me">deathmatch.me</a> domain provided by <a href="https://www.heroku.com/">Heroku</a>.
+        %h3 Code Licence
+        %a.clearfix{href: 'https://github.com/adscott/govhack/blob/master/LICENCE'}Apache 2.0
+
+      .span5
         %h3 Data Source
-        %a{href: 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/3303.02011?OpenDocument'} Underlying Causes of Death, Australia, 2011
+        %a.clearfix{href: '/year/2011'} View the raw data
+        %a.clearfix{href: 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/3303.02011?OpenDocument'} Underlying Causes of Death, Australia, 2011
         %h3 Contributors
         %a.clearfix{href: 'https://github.com/adscott'} Adam 'Not the golfer' Scott
         %a.clearfix{href: 'https://github.com/MasterPete'} Pennueng 'Doodle-master' Chemsripong
@@ -138,14 +141,9 @@
         %a.clearfix{href: 'https://github.com/kpvenables'} Kane 'The Kid' Venables
         %a.clearfix{href: 'https://github.com/PilchardFriendly'} Nick 'Don't Call me Dr.' Drew
         %a.clearfix{href: 'https://github.com/2metres'} Andrew 'The American' Carr
-        %h3 Code Licence
-        %a.clearfix{href: 'https://github.com/adscott/govhack/blob/master/LICENCE'}Apache 2.0
-        %h3 Colophon
-        %p This application has been built using <a href="http://www.sinatrarb.com/">Sinatra</a>, <a href="http://haml.info/">HAML</a>, <a href="http://jquery.com/">JQuery</a>, <a href="http://d3js.org/">D3</a>, <a href="http://code.shutterstock.com/rickshaw/">Rickshaw</a> and <a href="http://designmodo.github.io/Flat-UI/">FlatUI</a>. The source code for the site can be found on <a href="https://github.com/adscott/govhack/">GitHub</a>. Hosting for the <a href="http://deathmatch.me">deathmatch.me</a> domain provided by <a href="https://www.heroku.com/">Heroku</a>
 
       .span2
         %a{href:'http://thoughtworks.com'}
           %img{src:'/images/logos/thoughtworks.png', alt:'ThoughtWorks'}
-      .span2
         %a{href:'http://govhack.org'}
           %img{src:'/images/logos/govhack.png', alt:'GovHack 2014'}
