@@ -29,6 +29,17 @@
           Start Deathmatch
 %section.winner
   .container
+    - unless first.data_points.last.potential_years_lost_persons.nil? || second.data_points.last.potential_years_lost_persons.nil?
+      .row.year-comparison
+        %h2.title Years of potential life lost
+        .span5
+          %h2.number= "#{first.data_points.last.potential_years_lost_persons.to_f.round}"
+          %h4.years years
+        .span2
+          %h3.vs vs
+        .span5
+          %h2.number= "#{second.data_points.last.potential_years_lost_persons.to_f.round}"
+          %h4.years  years
     .row
       .span8.offset2.center
         .btn-group
@@ -39,15 +50,13 @@
       .span8.offset2
         .charts
           #chart1.chart
-          #chart2.chart
-          #chart3.chart
     .row
       .span6.offset3
         %a.btn.btn-block.btn-xlarge.btn-warning{href: '/'}
           play again
 %section.social
   .container
-    %h2 Share with your friends
+    %h1 Share with your friends
     .row
       .span5.offset1
         %a.btn.btn-block.btn-xlarge

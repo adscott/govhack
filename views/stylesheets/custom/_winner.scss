@@ -16,3 +16,37 @@
     margin: 40px 0;
   }
 }
+
+.year-comparison {
+
+  text-align: center;
+  background: $clouds;
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+  .title {
+    font-size: 200%;
+    color: $asbestos;
+    font-weight: 800;
+    line-height: 1em;
+    text-align: center;
+  }
+  .number {
+    font-family: $headline-font;
+    font-size: 600%;
+    margin-top: 60px;
+  }
+  .vs {
+    font-family: $headline-font;
+    font-size: 400%;
+    color: $alizarin;
+    margin-top: 40px;
+    line-height: 60px;
+  }
+  .years {
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+}
