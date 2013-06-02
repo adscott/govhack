@@ -8,12 +8,15 @@
 $btn-shadow-height: 8px;
 $btn-border-radius: 8px;
 
-//TO-DO refactor original concept code using scss
-
 .vote-for-death{
+
   background: $midnight-blue;
   color: white;
-  padding: 20px 0
+  padding: 20px;
+
+  h4{
+    margin-top: 12px;
+  }
 }
 section{
   padding: 40px 20px;
@@ -24,6 +27,7 @@ body{
 .face-off{
   background-color: $clouds;
   text-align: center;
+  padding-bottom: 80px;
 }
 .face-off h1{
   font-family: $headline-font;
@@ -42,11 +46,11 @@ body{
 .vs{
   font-family: $headline-font;
   font-size: 400%;
-  color: #e74c3c;
+  color: $alizarin;
   line-height: 60px;
 }
 .btn{
-  border-radius: 8px;
+  border-radius: $btn-border-radius;
   position: relative;
   text-shadow: 0 -2px 0 rgba(0,0,0,0.2);
   text-transform: uppercase;
@@ -54,89 +58,89 @@ body{
 }
 .btn:hover, 
 .btn:focus{
-  text-shadow: 0 -2px 0 rgba(0,0,0,0.1);
+  text-shadow: 0 -2px 0 rgba(0,0,0,0.2);
 }
 .btn.btn-caution{
-  background: #E67E22;
+  background: $carrot;
 }
 .btn.btn-xlarge {
   font-family: $base-font;
   padding: 17px 21px;
   font-size: 26.5px;
   font-weight: 800;
-  box-shadow: 0 8px 0 0 #2c3e50;
-  text-shadow: 0 -2px 0 0 #2c3e50;
+  box-shadow: 0 $btn-shadow-height 0 0 $midnight-blue;
+  text-shadow: 0 -2px 0 $midnight-blue;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: $btn-shadow-height+10;
 }
 .btn-xlarge:hover,
 .btn-xlarge:focus{
-  box-shadow: 0 0 0 0 #2c3e50;
+  box-shadow: 0 0 0 0 $midnight-blue;
 }
 .btn-xlarge.btn-primary{
-  box-shadow: 0 8px 0 0 #16A085;
-  text-shadow: 0 -2px 0 0 #16A085;
+  box-shadow: 0 $btn-shadow-height 0 0 $midnight-blue;
+  text-shadow: 0 -2px 0 $midnight-blue;
 }
 .btn-xlarge.btn-primary:hover,
 .btn-xlarge.btn-primary:focus{
-  box-shadow: 0 0 0 0 #16A085;
+  box-shadow: 0 0 0 0 $midnight-blue;
 }
 .btn-xlarge.btn-info{
-  box-shadow: 0 8px 0 0 #2980B9;
-  text-shadow: 0 -2px 0 0 #2980B9;
+  box-shadow: 0 $btn-shadow-height 0 0 $belize-hole;
+  text-shadow: 0 -2px 0 $belize-hole;
 }
 .btn-xlarge.btn-info:hover,
 .btn-xlarge.btn-info:focus{
-  box-shadow: 0 0 0 0 #2980B9;
+  box-shadow: 0 0 0 0 $belize-hole;
 }
 .btn-xlarge.btn-danger{
-  box-shadow: 0 8px 0 0 #C0392B;
-  text-shadow: 0 -2px 0 0 #C0392B;
+  box-shadow: 0 $btn-shadow-height 0 0 $pomegranate;
+  text-shadow: 0 -2px 0 $pomegranate;
 }
 .btn-xlarge.btn-danger:hover,
 .btn-xlarge.btn-danger:focus{
-  box-shadow: 0 0 0 0 #C0392B;
+  box-shadow: 0 0 0 0 $pomegranate;
 }
 .btn-xlarge.btn-success{
-  box-shadow: 0 8px 0 0 #27AE60;
-  text-shadow: 0 -2px 0 0 #27AE60;
+  box-shadow: 0 $btn-shadow-height 0 0 $green-sea;
+  text-shadow: 0 -2px 0 $green-sea;
 }
 .btn-xlarge.btn-success:hover,
 .btn-xlarge.btn-success:focus{
-  box-shadow: 0 0 0 0 #27AE60;
+  box-shadow: 0 0 0 0 $green-sea;
 }
 .btn-xlarge.btn-warning{
-  box-shadow: 0 8px 0 0 #F39C12;
-  text-shadow: 0 -2px 0 0 #F39C12;
+  box-shadow: 0 $btn-shadow-height 0 0 $orange;
+  text-shadow: 0 -2px 0 $orange;
 }
 .btn-xlarge.btn-warning:hover,
 .btn-xlarge.btn-warning:focus{
-  box-shadow: 0 0 0 0 #F39C12;
+  box-shadow: 0 0 0 0 $orange;
 }
 .btn.btn-caution{
-  background: #E67E22;
+  background: $pumpkin;
 }
 .btn-xlarge.btn-caution{
-  box-shadow: 0 8px 0 0 #D35400;
-  text-shadow: 0 -2px 0 0 #D35400;
+  box-shadow: 0 $btn-shadow-height 0 0 $pumpkin;
+  text-shadow: 0 -2px 0 $pumpkin;
 }
 .btn-xlarge.btn-caution:hover,
 .btn-xlarge.btn-caution:focus{
-  background: #eb984e;
-  box-shadow: 0 0 0 0 #D35400;
+  background: $carrot;
+  box-shadow: 0 0 0 0 $pumpkin;
 }
 .btn.btn-inverse{
   background: #D35400;
 }
 .btn-xlarge.btn-inverse{
-  background: #9B59B6;
-  box-shadow: 0 8px 0 0 #8E44AD;
-  text-shadow: 0 -2px 0 0 #8E44AD;
+  background: $amethyst;
+  box-shadow: 0 $btn-shadow-height 0 0 $wisteria;
+  text-shadow: 0 -2px 0 $wisteria;
 }
 .btn-xlarge.btn-inverse:hover,
 .btn-xlarge.btn-inverse:focus{
   background: #af7ac5;
-  box-shadow: 0 0 0 0 #8E44AD;
+  box-shadow: 0 0 0 0 $wisteria;
 }
 .btn.btn-xlarge:hover, 
 .btn.btn-xlarge:focus{
@@ -148,6 +152,11 @@ body{
 
 }
 @media (max-width: 767px) {
+  .vote-for-death{
+    h4{
+      text-align: center;
+    }
+  }
 }
 @media (max-width: 480px) {
 

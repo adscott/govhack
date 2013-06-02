@@ -1,7 +1,11 @@
 %header.vote-for-death.clearfix
   .container
-    %a.btn.btn-large.btn-info.pull-right vote for us
-    %h3 This project was created for GovHack Sydney 2013
+    .row
+      .span8
+        %h4 This project was created for GovHack Sydney 2013
+      .span3.offset1
+        %a.btn.btn-block.btn-large.btn-info vote for us
+
 %section.face-off
   .container
     .row
@@ -11,17 +15,18 @@
         .competitor
           %header
             %img{src:first.image}
-            %h2.title= first.title
+            %h4.title= first.title
       .span2
         %h3.vs vs
       .span5
         .competitor
           %header
             %img{src:second.image}
-            %h2.title= second.title
+            %h4.title= second.title
     .row
-      %button.btn.btn-xlarge.btn-danger
-        Start Deathmatch
+      .span6.offset3
+        %button.btn.btn-block.btn-xlarge.btn-danger
+          Start Deathmatch
 %section.winner
   .container
     .row
@@ -50,9 +55,9 @@
           %li 1
           %li 2
           %li 3 
-      .span4
-        %h3 Other links
-        %ul
-          %li 1
-          %li 2
-          %li 3 
+      .span2
+        %a{href:'http://thoughtworks.com'}
+          %img{src:'/images/logos/thoughtworks.png', alt:'ThoughtWorks'}
+      .span2
+        %a{href:'http://govhack.org'}
+          %img{src:'/images/logos/govhack.png', alt:'GovHack 2014'}
