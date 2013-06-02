@@ -106,7 +106,45 @@
 
   var hover = new Hover( { graph: graph } );
 
-      graph.render();
+  graph.render();
+
+  var barChart = new Rickshaw.Graph( {
+          element: document.querySelector("#chart2"),
+          renderer: 'bar',
+          series: [ {
+              color: 'steelblue',
+              data: #{first_json},
+              name: "#{first.title}"
+          },
+          {
+              color: 'lightblue',
+              data: #{second_json},
+              name: "#{second.title}"}]});
+
+  var yAxis = new Rickshaw.Graph.Axis.Y({
+    graph: barChart
+  });
+
+  var xAxis = new Rickshaw.Graph.Axis.X({
+    graph: barChart
+  });
+
+  var legend = new Rickshaw.Graph.Legend({
+      graph: barChart,
+      element: document.querySelector('#chart2legend')
+  });
+
+  var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
+  	graph: barChart,
+  	legend: legend
+  } );
+
+  new Rickshaw.Graph.HoverDetail( {
+  	graph: barChart
+  } );
+
+  barChart.render();
+
   });
 
 %section.winner
@@ -133,6 +171,8 @@
         .charts
           #legend
           #chart1.chart
+          #chart2legend
+          #chart2.chart
     .row
       .span6.offset3
         %a.btn.btn-block.btn-xlarge.btn-warning{href: '/'}
