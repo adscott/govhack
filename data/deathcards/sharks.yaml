@@ -1,10 +1,10 @@
-title: Sharks!
+title: Sharks (Or Other Marine Animals)
 
 description: Sharks are really cool, and this description
   can be multi-line
 
 slug: sharks-and-stuff
 
-image: deathcards/sharks.png
+image: /images/cod/marine-animal.png
 
-category: CHAPTER I Certain infectious and parasitic diseases (A00-B99)
+category: CHAPTER XX External causes of morbidity and mortality (V01-Y98) > Other external causes of accidental injury (W00-X59) > Exposure to animate mechanical forces (W50-W64) > Contact with marine animal (W56)

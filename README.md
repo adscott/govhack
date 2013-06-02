@@ -1,7 +1,7 @@
 govhack
 ===========================
 
-Hosted [http://govhack.onth.at/](http://govhack.onth.at/).
+Hosted [http://deathmatch.me/](http://deathmatch.me/).
 
 Data from [here](http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/3303.02011?OpenDocument) shoved into a database and queriable through a thin sinatra wrapper.
 

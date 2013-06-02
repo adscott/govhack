@@ -1,0 +1,76 @@
+$card-padding: 30px;
+
+// Body Class
+.card-single{
+	background: $midnight-blue;
+}
+.cards{}
+
+.card{
+	background: white;
+	max-width: 480px;
+	margin: 60px auto;
+	padding-bottom: $card-padding;
+	@include border-radius(8px);
+	@include box-shadow(0 6px 0 $concrete);
+	
+	header {
+		@include border-radius(8px 8px 0 0);
+		padding: $card-padding;
+		background: $alizarin;
+		min-height: 112px;
+
+		h1{
+			text-align: center;
+			font-family: $headline-font;
+			font-size: 1200%;
+			line-height: 0.9em;
+			color: white;
+			font-weight: normal;
+			float: left;
+			margin-right: 20px;
+		}
+		h2{
+			font-family: $headline-font;
+			font-size: 220%;
+			line-height: 1em;
+			color: white;
+			font-weight: normal;
+			margin-top: 20px;
+		}
+	}
+	>div{
+		padding: 0 $card-padding;
+	}
+	.center{
+		text-align: center;
+	}
+	.btn {
+		display: block;
+		padding: $card-padding/2;
+		margin: $card-padding $card-padding 6px;
+		font-size: 140%;
+		font-family: $base-font;
+		font-weight: 800;
+		text-transform: uppercase;
+		@include box-sizing;
+	}
+}
+@media all and (max-width: 480px){
+	.card-single{
+		margin: 20px;
+	}
+	.card{
+		margin: auto;
+		
+		header {		
+			h1{
+				font-size: 800%;
+			}
+			h2{
+				margin-top: 10px;
+				font-size: 175%;
+			}
+		}
+	}
+}

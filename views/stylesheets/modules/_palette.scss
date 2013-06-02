@@ -27,18 +27,18 @@
 
 // Colors
 @include calc-color(firm, $firm);
-
 @include calc-color(success, $success);
-
 @include calc-color(info, $info);
-
 @include calc-color(warning, $warning);
-
 @include calc-color(danger, $danger);
-
 @include calc-color(night, #34495e);
-
 @include calc-color(bright, #f1c40f);
+
+$amethyst   : #9b59b6;
+$wisteria   : #8e44ad;
+
+$carrot     : #e67e22;
+
 
 .palette-success-dark {
   background-color: #27ae60;

@@ -1,11 +1,24 @@
 .card
-  .title= card.title
-  %img{src:card.image}
-  .description= html_escape(card.description)
-
-  .data_points
-    %ul
-      - card.data_points.each do | dp |
-        %li
-          = "Year: #{dp.year}, Total: #{dp.persons}"
-
+  %header
+    %h1= "#{card.data_points.last.persons}"
+    %h2.title= " persons died from #{card.title}"
+  .content
+    %img{src:card.image}
+    %p.description= "#{card.description}"
+  .charts.hidden
+    %table.table.table-striped
+      %thead
+        %tr
+          %td year
+          %td.center males
+          %td.center females
+          %td.center total
+      %tbody
+        - card.data_points.reverse.each do | dp |
+          %tr
+            %td= dp.year
+            %td.center= dp.males
+            %td.center= dp.females
+            %td.center= dp.persons
+    %p Explanation of data variance.
+  %a#show-data.btn.btn-xlarge.btn-info{href:'#',} show data

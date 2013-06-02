@@ -1,15 +1,33 @@
 @import url(http://fonts.googleapis.com/css?family=Luckiest+Guy);
 
+@import "cards";
+@import "footer";
+@import "winner";
+@import "social";
+
+$btn-shadow-height: 8px;
+$btn-border-radius: 8px;
+
+//TO-DO refactor original concept code using scss
+
+.vote-for-death{
+  background: $midnight-blue;
+  color: white;
+  padding: 20px 0
+}
+section{
+  padding: 40px 20px;
+}
 body{
   padding: 0;
 }
 .face-off{
-  background-color: #efefef;
+  background-color: $clouds;
   text-align: center;
-  padding: 40px 20px 0;
 }
 .face-off h1{
-  font-family: 'Luckiest Guy', cursive;
+  font-family: $headline-font;
+  font-weight: normal;
   text-transform: uppercase;
   font-size: 600%;
   line-height: 1;
@@ -22,14 +40,17 @@ body{
   width: 100%;
 }
 .vs{
-  font-family: 'Luckiest Guy', cursive;
+  font-family: $headline-font;
   font-size: 400%;
   color: #e74c3c;
+  line-height: 60px;
 }
 .btn{
   border-radius: 8px;
   position: relative;
   text-shadow: 0 -2px 0 rgba(0,0,0,0.2);
+  text-transform: uppercase;
+  font-weight: 800;
 }
 .btn:hover, 
 .btn:focus{
@@ -39,7 +60,7 @@ body{
   background: #E67E22;
 }
 .btn.btn-xlarge {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $base-font;
   padding: 17px 21px;
   font-size: 26.5px;
   font-weight: 800;
@@ -126,20 +147,19 @@ body{
 
 
 }
-@media (max-width: 767px) {}
-@media (max-width: 480px) {}
-@media (max-width: 979px) {
+@media (max-width: 767px) {
+}
+@media (max-width: 480px) {
+
+
+}
+@media (min-width: 979px) {
 
   .vs{  line-height: 290px;  }
 
 }
 @media (min-width: 980px) {
 
-  .vs{  line-height: 380px;  }
-
-}
-@media (min-width: 1200px) {
-
-  .vs{  line-height: 470px;  }
+  .vs{  line-height: 480px;  }
 
 }

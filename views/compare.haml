@@ -1,1 +1,58 @@
-%p= "Comparing #{first.title} with #{second.title}"
+%header.vote-for-death.clearfix
+  .container
+    %a.btn.btn-large.btn-info.pull-right vote for us
+    %h3 This project was created for GovHack Sydney 2013
+%section.face-off
+  .container
+    .row
+      %h1 What is more deadly?
+    .row
+      .span5
+        .competitor
+          %header
+            %img{src:first.image}
+            %h2.title= first.title
+      .span2
+        %h3.vs vs
+      .span5
+        .competitor
+          %header
+            %img{src:second.image}
+            %h2.title= second.title
+    .row
+      %button.btn.btn-xlarge.btn-danger
+        Start Deathmatch
+%section.winner
+  .container
+    .row
+      .span8.offset2
+        .chart
+    .row
+      .span6.offset3
+        %a.btn.btn-block.btn-xlarge.btn-warning
+          play again
+%section.social
+  .container
+    %h2 Share with your friends
+    .row
+      .span5.offset1
+        %a.btn.btn-block.btn-xlarge
+          share on facebook
+      .span5
+        %a.btn.btn-block.btn-xlarge.btn-info
+          tweet this
+%footer
+  .container
+    .row
+      .span8
+        %h3 Sources
+        %ul
+          %li 1
+          %li 2
+          %li 3 
+      .span4
+        %h3 Other links
+        %ul
+          %li 1
+          %li 2
+          %li 3 

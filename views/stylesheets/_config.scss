@@ -1,16 +1,50 @@
 // Colors
-$base: #34495e;
-$firm: #1abc9c;
+$turquoise     : #1abc9c;
+$green-sea     : #16a085;
 
-$gray: #95a5a6;
-$lightgray: #ecf0f1;
-$inverse: white;
+$emerald	   : #2ecc71;
+$nephritis	   : #27ae60;
+ 
+$wet-asphalt   : #34495e;
+$midnight-blue : #2c3e50;
+ 
+$sunflower	   : #f1c40f;
+$orange        : #f39c12;
+ 
+$peter-river   : #3498db;
+$belize-hole   : #2980b9;
+ 
+$amethyst      : #9b59b6;
+$wisteria      : #8e44ad;
+ 
+$carrot        : #e67e22;
+$pumpkin       : #d35400;
+ 
+$alizarin      : #e74c3c;
+$pomegranate   : #c0392b;
+ 
+$clouds        : #ecf0f1;
+$silver        : #bdc3c7;
+ 
+$concrete      : #95a5a6;
+$asbestos      : #7f8c8d;
 
-$success: #2ecc71;
-$danger: #e74c3c;
-$warning: #f1c40f;
-$info: #3498db;
+// Usage
+
+$base          : $wet-asphalt;
+$firm          : $turquoise;
+
+$gray          : $silver;
+$lightgray     : $clouds;
+$inverse       : white;
+
+$success	   : $emerald;
+$danger		   : $alizarin;
+$warning       : $sunflower;
+$info	       : $peter-river;
 
 // Font
-$base-font-family: "Lato", sans-serif;
+
+$base-font		: 'Open Sans', sans-serif;
+$headline-font	: 'Luckiest Guy', Impact, cursive;
 $base-font-size: 14px;

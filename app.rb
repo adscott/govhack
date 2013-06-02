@@ -8,7 +8,19 @@ ActiveRecord::Base.configurations = YAML::load(ERB.new(File.read('config/databas
 ActiveRecord::Base.establish_connection(ENV['RACK_ENV'] || 'development')
 
 get '/' do
-  redirect to "/year/2011"
+  card1 = Card.first(:offset => rand(Card.count))
+  card2 = Card.first(:offset => rand(Card.count))
+
+  if card1.id == card2.id
+    redirect to '/'
+  else
+    redirect to "/compare/#{card1.slug}/vs/#{card2.slug}"
+  end
+end
+
+get '/search' do
+  term = params[:term]
+  haml :search_results, locals: {data_points: DataPoint.where(year: 2011).select { |dp| dp.name.downcase.include? term.downcase }}
 end
 
 get '/year/:year' do | year |
@@ -25,7 +37,7 @@ get '/year/:year' do | year |
 end
 
 get '/card/:slug' do | slug |
-  haml :card, locals: { card: Card.where(slug:slug).first }
+  haml :card, locals: { card: Card.where(slug:slug).first, body_class: 'card-single' }
 end
 
 
@@ -51,7 +63,7 @@ get '/card' do
   haml :cards, locals: { cards: Card.find(:all) }
 end
 
-get '/compare/:firstslug/with/:secondslug' do | firstslug, secondslug |
+get '/compare/:firstslug/vs/:secondslug' do | firstslug, secondslug |
   haml :compare, locals: { first: Card.where(slug:firstslug).first, second: Card.where(slug:secondslug).first }
 end
 
