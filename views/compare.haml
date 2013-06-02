@@ -37,13 +37,24 @@
             %button.btn Chart 2
             %button.btn Chart 3
           .chart
+    - unless first.data_points.last.potential_years_lost_persons.nil? || second.data_points.last.potential_years_lost_persons.nil?
+      .row.year-comparison
+        %h1 Years of potential life lost
+        .span3.offset2
+          %h2.years= "#{first.data_points.last.potential_years_lost_persons}"
+          %h4 years
+        .span2
+          %h3 vs
+        .span3
+          %h2.years= "#{second.data_points.last.potential_years_lost_persons}"
+          %h4  years
     .row
       .span6.offset3
         %a.btn.btn-block.btn-xlarge.btn-warning{href: '/'}
           play again
 %section.social
   .container
-    %h2 Share with your friends
+    %h1 Share with your friends
     .row
       .span5.offset1
         %a.btn.btn-block.btn-xlarge

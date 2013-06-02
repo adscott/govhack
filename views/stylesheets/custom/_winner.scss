@@ -5,3 +5,22 @@
     margin: 40px 0;
   }
 }
+
+.year-comparison {
+  text-align: center;
+
+  h2{
+    font-family: $headline-font;
+    font-size: 400%;
+  }
+  h3{
+    font-family: $headline-font;
+    font-size: 400%;
+    color: $alizarin;
+  }
+  h4{
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+}
