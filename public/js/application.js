@@ -31,9 +31,6 @@ $(document).ready(function() {
         range: "min",
     });
 
-    // JS input/textarea placeholder
-    $("input, textarea").placeholder();
-
     // Make pagination demo work
     $(".pagination a").click(function() {
         if (!$(this).parent().hasClass("previous") && !$(this).parent().hasClass("next")) {
@@ -50,6 +47,13 @@ $(document).ready(function() {
     // Disable link click not scroll top
     $("a[href='#']").click(function() {
         return false
+    });
+
+    $(".fight").click(function (e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: $(".winner").offset().top
+        }, 500);
     });
 
 });
