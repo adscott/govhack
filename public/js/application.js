@@ -52,7 +52,7 @@ $(document).ready(function() {
     $(".fight").click(function (e) {
         e.preventDefault();
         $('html, body').animate({
-            scrollTop: $(".winner").offset().top
+            scrollTop: $(".result").offset().top
         }, 500);
     });
 

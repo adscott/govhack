@@ -4,6 +4,7 @@
 @import "footer";
 @import "winner";
 @import "social";
+@import "charts";
 
 $btn-shadow-height: 8px;
 $btn-border-radius: 8px;
@@ -30,7 +31,7 @@ $btn-border-radius: 8px;
   }
 }
 section{
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 body{
   padding: 0;
@@ -38,7 +39,7 @@ body{
 .face-off{
   background-color: $clouds;
   text-align: center;
-  padding-bottom: 80px;
+  padding-bottom: 60px;
 }
 .face-off h1{
   font-family: $headline-font;

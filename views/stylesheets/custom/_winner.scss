@@ -1,6 +1,8 @@
-.winner{
+.result{
+
   .btn-group{
     margin: 0 auto;
+
     .btn.active{
       color: $sunflower;
     }
@@ -8,22 +10,34 @@
   .center{
     text-align: center;
   }
-  .charts{
+  .data-note{
+    margin: 20px 0 40px;
   }
   .chart{
-    background: $clouds;
-    height: 360px;
     margin: 40px 0;
   }
 }
-
+.winner, .loser{
+  text-align: center;
+}
+.winner{
+  font-family: $headline-font;
+  font-size: 400%;
+  color: $pumpkin;
+  margin-top: 40px;
+  line-height: 100%;
+}
+.loser{
+  color: $concrete;
+  margin-bottom: 60px;
+}
 .year-comparison {
 
   text-align: center;
   background: $clouds;
   border-radius: 8px;
   padding-top: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 24px;
 
   .title {
     font-size: 200%;
@@ -32,16 +46,20 @@
     line-height: 1em;
     text-align: center;
   }
+  .cause{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    line-height: 100%;
+  }
   .number {
     font-family: $headline-font;
     font-size: 600%;
-    margin-top: 60px;
   }
   .vs {
     font-family: $headline-font;
     font-size: 400%;
     color: $alizarin;
-    margin-top: 40px;
+    margin-top: 80px;
     line-height: 60px;
   }
   .years {
