@@ -76,13 +76,17 @@ get '/compare/:firstslug/vs/:secondslug' do | firstslug, secondslug |
   first_card = Card.where(slug:firstslug).first
   second_card = Card.where(slug:secondslug).first
   flavour = "Which is more deadly? #{first_card.title} or #{second_card.title}?"
-tweet_link = "http://twitter.com/intent/tweet?url=#{CGI.escape(request.url)}&text=#{CGI.escape(flavour)}"
+  tweet_link = "http://twitter.com/intent/tweet?url=#{CGI.escape(request.url)}&text=#{CGI.escape(flavour)}"
+  facebook_link = "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape(request.url)}"
 
-  haml :compare, locals: { first: first_card,
-      first_json: to_json_series(first_card),
-      second: second_card,
-      second_json: to_json_series(second_card),
-      tweet_link: tweet_link}
+  haml :compare, locals: {
+    first: first_card,
+    first_json: to_json_series(first_card),
+    second: second_card,
+    second_json: to_json_series(second_card),
+    tweet_link: tweet_link,
+    facebook_link: facebook_link
+  }
 end
 
 
