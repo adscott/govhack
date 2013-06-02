@@ -27,24 +27,77 @@
       .span6.offset3
         %button.fight.btn.btn-block.btn-xlarge.btn-danger
           Start Deathmatch
+
+:javascript
+
+  $(document).ready( function() {
+
+  var graph = new Rickshaw.Graph( {
+        element: document.querySelector("#chart1"),
+        renderer: 'line',
+        series: [ {
+            color: 'steelblue',
+            data: #{first_json},
+            name: "#{first.title}"
+        },
+        {
+            color: 'lightblue',
+            data: #{second_json},
+            name: "#{second.title}"}]});
+
+
+
+      var yAxis = new Rickshaw.Graph.Axis.Y({
+           graph: graph
+      });
+
+      var xAxis = new Rickshaw.Graph.Axis.X({
+                 graph: graph
+      });
+
+      var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+          graph: graph
+      } );
+
+      graph.render();
+  });
+
 %section.winner
   .container
+    - unless first.data_points.last.potential_years_lost_persons.nil? || second.data_points.last.potential_years_lost_persons.nil?
+      .row.year-comparison
+        %h2.title Years of potential life lost
+        .span5
+          %h2.number= "#{first.data_points.last.potential_years_lost_persons.to_f.round}"
+          %h4.years years
+        .span2
+          %h3.vs vs
+        .span5
+          %h2.number= "#{second.data_points.last.potential_years_lost_persons.to_f.round}"
+          %h4.years years
+    .row
+      .span8.offset2.center
+        .btn-group
+          %a.btn.btn-large.active{:href =>'#chart1', :'data-toggle' => 'tab'} Chart 1
+          %a.btn.btn-large{:href =>'#chart2', :'data-toggle' => 'tab'} Chart 2
+          %a.btn.btn-large{:href =>'#chart3', :'data-toggle' => 'tab'} Chart 3
     .row
       .span8.offset2
-        .chart
+        .charts
+          #chart1.chart
     .row
       .span6.offset3
         %a.btn.btn-block.btn-xlarge.btn-warning{href: '/'}
           play again
 %section.social
   .container
-    %h2 Share with your friends
+    %h1 Share with your friends
     .row
       .span5.offset1
         %a.btn.btn-block.btn-xlarge
           share on facebook
       .span5
-        %a.btn.btn-block.btn-xlarge.btn-info
+        %a.btn.btn-block.btn-xlarge.btn-info{href: tweet_link}
           tweet this
 %footer
   .container

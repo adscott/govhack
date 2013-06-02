@@ -15,7 +15,18 @@ $btn-border-radius: 8px;
   padding: 20px;
 
   h4{
-    margin-top: 12px;
+    margin-top: 16px;
+  }
+  .btn.btn-large{
+    box-shadow: 0 6px 0 0 $belize-hole;
+    position: relative;
+    margin-bottom: 8px;
+  } 
+  .btn.btn-large:hover, 
+  .btn.btn-large:focus{
+    box-shadow: 0 0 0 0 $belize-hole;
+    outline: none;
+    bottom: -6px;
   }
 }
 section{
