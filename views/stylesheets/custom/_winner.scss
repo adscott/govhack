@@ -37,7 +37,7 @@
   background: $clouds;
   border-radius: 8px;
   padding-top: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 24px;
   margin-bottom: 80px; 
 
   .title {
@@ -48,7 +48,7 @@
     text-align: center;
   }
   .cause{
-    margin-top: 60px;
+    margin-top: 40px;
     margin-bottom: 20px;
   }
   .number {
@@ -59,7 +59,7 @@
     font-family: $headline-font;
     font-size: 400%;
     color: $alizarin;
-    margin-top: 60px;
+    margin-top: 80px;
     line-height: 60px;
   }
   .years {
