@@ -63,46 +63,38 @@ get '/card' do
   haml :cards, locals: { cards: Card.find(:all) }
 end
 
-get '/compare/:firstslug/vs/:secondslug' do | firstslug, secondslug |
-  haml :compare, locals: { first: Card.where(slug:firstslug).first, second: Card.where(slug:secondslug).first }
+def to_json_series(card)
+  first_by_year = []
+  card.data_points.each do | dp |
+    first_by_year << { :x => dp.year, :y => dp.persons }
+  end
+  return first_by_year.to_json
 end
 
-#
-#card.data_points.reverse.each do | dp |
-#  %tr
-#  %td= dp.year
-#  %td.center= dp.males
-#  %td.center= dp.females
-#  %td.center= dp.persons
+get '/compare/:firstslug/vs/:secondslug' do | firstslug, secondslug |
+  first_card = Card.where(slug:firstslug).first
+  second_card = Card.where(slug:secondslug).first
+
+  haml :compare, locals: { first: first_card,
+      first_json: to_json_series(first_card),
+      second: second_card,
+      second_json: to_json_series(second_card)}
+end
 
 
-#sample = [
-#    {
-#        "color": "blue",
-#    "name": "New York",
-#    "data": [ { "x": 2001, "y": 40 }, { "x": 1, "y": 49 }, { "x": 2, "y": 38 }, { "x": 3, "y": 30 }, { "x": 4, "y": 32 } ]
-#}, {
-#    "name": "London",
-#    "data": [ { "x": 0, "y": 19 }, { "x": 1, "y": 22 }, { "x": 2, "y": 29 }, { "x": 3, "y": 20 }, { "x": 4, "y": 14 } ]
-#}, {
-#    "name": "Tokyo",
-#    "data": [ { "x": 0, "y": 8 }, { "x": 1, "y": 12 }, { "x": 2, "y": 15 }, { "x": 3, "y": 11 }, { "x": 4, "y": 10 } ]
-#}
-#]
-#
 get '/compare/:firstslug/vs/:secondslug/json' do | firstslug, secondslug |
   require 'json'
   content_type :json
   first = Card.where(slug:firstslug).first
   first_by_year = []
   first.data_points.reverse.each do | dp |
-    first_by_year << { :year => dp.year, :deaths => dp.persons }
+    first_by_year << { 'x' => dp.year, 'y' => dp.persons }
   end
 
   second = Card.where(slug:secondslug).first
   second_by_year = []
   second.data_points.reverse.each do | dp |
-    second_by_year << { :year => dp.year, :deaths => dp.persons }
+    second_by_year << { 'x' => dp.year, 'y' => dp.persons }
   end
 
   return [

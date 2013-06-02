@@ -29,27 +29,31 @@
           Start Deathmatch
 
 :javascript
-  var ajaxGraph = new Rickshaw.Graph.Ajax( {
 
-  	element: document.getElementById("chart"),
-  	width: 400,
-  	height: 200,
-  	renderer: 'line',
-  	dataURL: 'data/data.json',
-  	onData: function(d) { d[0].data[0].y = 80; return d },
-  	series: [
-  		{
-  			name: 'New York',
-  			color: '#c05020',
-  		}, {
-  			name: 'London',
-  			color: '#30c020',
-  		}, {
-  			name: 'Tokyo',
-  			color: '#6060c0'
-  		}
-  	]
+  $(document).ready( function() {
+  var data2 = [ { x: 1910, y: 92228531 }, { x: 1920, y: 106021568 }, { x: 1930, y: 123202660 }, { x: 1940, y: 132165129 }, { x: 1950, y: 151325798 }, { x: 1960, y: 179323175 }, { x: 1970, y: 203211926 }, { x: 1980, y: 226545805 }, { x: 1990, y: 248709873 }, { x: 2000, y: 281421906 }, { x: 2010, y: 308745538 } ];
+
+  var graph = new Rickshaw.Graph( {
+        element: document.querySelector("#line_chart"),
+        width: 400,
+        renderer: 'line',
+        height: 200,
+        series: [ {
+                color: 'steelblue',
+                data: #{first_json},
+                name: "#{first.title}"
+        },
+        {
+                        color: 'lightblue',
+                        data: #{second_json},
+                        name: "#{second.title}"
+                } ]
   } );
+
+
+
+      graph.render()
+  });
 
 %section.winner
   .container
@@ -60,7 +64,7 @@
             %button.btn Chart 1
             %button.btn Chart 2
             %button.btn Chart 3
-          .chart
+          #line_chart.chart
     .row
       .span6.offset3
         %a.btn.btn-block.btn-xlarge.btn-warning{href: '/'}
