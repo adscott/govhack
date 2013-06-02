@@ -32,84 +32,8 @@
 
   $(document).ready( function() {
 
-  var graph = new Rickshaw.Graph( {
-        element: document.querySelector("#chart1"),
-        renderer: 'line',
-        interpolate: 'linear',
-        series: [ {
-            color: 'steelblue',
-            data: #{first_json},
-            name: "#{first.title}"
-        },
-        {
-            color: 'lightblue',
-            data: #{second_json},
-            name: "#{second.title}"}]});
-
-
-
-      var yAxis = new Rickshaw.Graph.Axis.Y({
-           graph: graph
-      });
-
-      var xAxis = new Rickshaw.Graph.Axis.X({
-                 graph: graph
-      });
-
-      var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-          graph: graph
-      } );
-
-      //var legend = new Rickshaw.Graph.Legend( {
-      //        graph: graph,
-      //        element: document.querySelector('#legend'),
-      //} );
-
-  var legend = document.querySelector('#legend');
-
-  var Hover = Rickshaw.Class.create(Rickshaw.Graph.HoverDetail, {
-
-  render: function(args) {
-    legend.innerHTML = args.formattedXValue;
-
-    args.detail.sort(function(a, b) { return a.order - b.order }).forEach( function(d) {
-      var line = document.createElement('div');
-      line.className = 'line';
-
-      var swatch = document.createElement('div');
-      swatch.className = 'swatch';
-      swatch.style.backgroundColor = d.series.color;
-
-      var label = document.createElement('div');
-      label.className = 'label';
-      label.innerHTML = d.name + ": " + d.formattedYValue;
-
-      line.appendChild(swatch);
-      line.appendChild(label);
-
-      legend.appendChild(line);
-
-      var dot = document.createElement('div');
-      dot.className = 'dot';
-      dot.style.top = graph.y(d.value.y0 + d.value.y) + 'px';
-      dot.style.borderColor = d.series.color;
-
-      this.element.appendChild(dot);
-
-      dot.className = 'dot active';
-
-      this.show();
-
-    }, this );
-    }
-  });
-
-  var hover = new Hover( { graph: graph } );
-
-  graph.render();
-
   var barChart = new Rickshaw.Graph( {
-          element: document.querySelector("#chart2"),
+          element: document.querySelector("#chart1"),
           renderer: 'bar',
           series: [ {
               color: 'steelblue',
@@ -131,7 +55,7 @@
 
   var legend = new Rickshaw.Graph.Legend({
       graph: barChart,
-      element: document.querySelector('#chart2legend')
+      element: document.querySelector('#legend')
   });
 
   var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
@@ -179,8 +103,6 @@
         .charts
           #legend
           #chart1.chart
-          #chart2legend
-          #chart2.chart
     .row
       .span6.offset3
         %a.btn.btn-block.btn-xlarge.btn-warning{href: '/'}
