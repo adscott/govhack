@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'haml'
 require 'active_record'
+require 'cgi'
 require './models/data_point'
 require './models/card'
 
@@ -74,11 +75,14 @@ end
 get '/compare/:firstslug/vs/:secondslug' do | firstslug, secondslug |
   first_card = Card.where(slug:firstslug).first
   second_card = Card.where(slug:secondslug).first
+  flavour = "Which is more deadly? #{first_card.title} or #{second_card.title}?"
+tweet_link = "http://twitter.com/intent/tweet?url=#{CGI.escape(request.url)}&text=#{CGI.escape(flavour)}"
 
   haml :compare, locals: { first: first_card,
       first_json: to_json_series(first_card),
       second: second_card,
-      second_json: to_json_series(second_card)}
+      second_json: to_json_series(second_card),
+      tweet_link: tweet_link}
 end
 
 
