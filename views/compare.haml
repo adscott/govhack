@@ -55,22 +55,30 @@
       graph.render()
   });
 
-%section.winner
+%section.result
   .container
+    - sorted = [first, second].sort { |x,y| y.data_points.last.persons <=> x.data_points.last.persons }
+    .row
+      %h1.winner= "#{sorted[0].data_points.last.persons} people killed by #{sorted[0].title.downcase}"
+      %h2.loser= "while only #{sorted[1].data_points.last.persons} killed by #{sorted[1].title.downcase} last year."
     - unless first.data_points.last.potential_years_lost_persons.nil? || second.data_points.last.potential_years_lost_persons.nil?
       .row.year-comparison
-        %h2.title Years of potential life lost
+        %h2.title Years of potential life lost to society
         .span5
+          %h3.cause= first.title
           %h2.number= "#{first.data_points.last.potential_years_lost_persons.to_f.round}"
           %h4.years years
         .span2
           %h3.vs vs
         .span5
+          %h3.cause= second.title
           %h2.number= "#{second.data_points.last.potential_years_lost_persons.to_f.round}"
           %h4.years years
+        %small
+          %a{href: 'http://en.wikipedia.org/wiki/Years_of_potential_life_lost'} more about potential life lost calculation
     .row
       .span8.offset2.center
-        .btn-group
+        .btn-group  
           %a.btn.btn-large.active{:href =>'#chart1', :'data-toggle' => 'tab'} Chart 1
           %a.btn.btn-large{:href =>'#chart2', :'data-toggle' => 'tab'} Chart 2
           %a.btn.btn-large{:href =>'#chart3', :'data-toggle' => 'tab'} Chart 3

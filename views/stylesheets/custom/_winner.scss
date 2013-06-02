@@ -1,6 +1,8 @@
-.winner{
+.result{
+
   .btn-group{
     margin: 0 auto;
+
     .btn.active{
       color: $sunflower;
     }
@@ -16,7 +18,19 @@
     margin: 40px 0;
   }
 }
-
+.winner, .loser{
+  text-align: center;
+}
+.winner{
+  font-family: $headline-font;
+  font-size: 400%;
+  color: $green-sea;
+  margin-top: 40px;
+}
+.loser{
+  color: $concrete;
+  margin-bottom: 60px;
+}
 .year-comparison {
 
   text-align: center;
@@ -24,6 +38,7 @@
   border-radius: 8px;
   padding-top: 12px;
   padding-bottom: 12px;
+  margin-bottom: 80px; 
 
   .title {
     font-size: 200%;
@@ -32,16 +47,19 @@
     line-height: 1em;
     text-align: center;
   }
+  .cause{
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
   .number {
     font-family: $headline-font;
     font-size: 600%;
-    margin-top: 60px;
   }
   .vs {
     font-family: $headline-font;
     font-size: 400%;
     color: $alizarin;
-    margin-top: 40px;
+    margin-top: 60px;
     line-height: 60px;
   }
   .years {
