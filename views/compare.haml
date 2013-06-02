@@ -78,7 +78,8 @@
       %h2.loser= "while only #{sorted[1].data_points.last.persons} killed by #{sorted[1].title.downcase} last year."
     - unless first.data_points.last.potential_years_lost_persons.nil? || second.data_points.last.potential_years_lost_persons.nil?
       .row.year-comparison
-        %h2.title Years of potential life lost to society
+        .span12
+          %h2.title Years of potential life lost to society
         .span5
           %h3.cause= first.title
           %h2.number= "#{first.data_points.last.potential_years_lost_persons.to_f.round}"
@@ -129,7 +130,6 @@
         %p This application has been built using <a href="http://www.sinatrarb.com/">Sinatra</a>, <a href="http://haml.info/">HAML</a>, <a href="http://jquery.com/">JQuery</a>, <a href="http://d3js.org/">D3</a>, <a href="http://code.shutterstock.com/rickshaw/">Rickshaw</a> and <a href="http://designmodo.github.io/Flat-UI/">FlatUI</a>. The source code for the site can be found on <a href="https://github.com/adscott/govhack/">GitHub</a>. Hosting for the <a href="http://deathmatch.me">deathmatch.me</a> domain provided by <a href="https://www.heroku.com/">Heroku</a>.
         %h3 Code Licence
         %a.clearfix{href: 'https://github.com/adscott/govhack/blob/master/LICENCE'}Apache 2.0
-
       .span5
         %h3 Data Source
         %a.clearfix{href: '/year/2011'} View the raw data
