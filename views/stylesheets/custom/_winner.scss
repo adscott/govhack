@@ -1,4 +1,15 @@
 .winner{
+  .btn-group{
+    margin: 0 auto;
+    .btn.active{
+      color: $sunflower;
+    }
+  }
+  .center{
+    text-align: center;
+  }
+  .charts{
+  }
   .chart{
     background: $clouds;
     height: 360px;
