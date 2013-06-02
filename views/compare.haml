@@ -90,8 +90,10 @@
           %h3.cause= second.title
           %h2.number= "#{second.data_points.last.potential_years_lost_persons.to_f.round}"
           %h4.years years
-        %small
-          %a{href: 'http://en.wikipedia.org/wiki/Years_of_potential_life_lost'} Learn more about potential life lost calculation
+      .row
+        .span12.center.data-note
+          %small
+            %a{href: 'http://en.wikipedia.org/wiki/Years_of_potential_life_lost'} Learn more about potential life lost calculation
     .row
       .span8.offset2.center
         .btn-group

@@ -10,6 +10,9 @@
   .center{
     text-align: center;
   }
+  .data-note{
+    margin: 20px 0 40px;
+  }
   .charts{
   }
   .chart{
@@ -26,6 +29,7 @@
   font-size: 400%;
   color: $green-sea;
   margin-top: 40px;
+  line-height: 100%;
 }
 .loser{
   color: $concrete;
@@ -38,7 +42,6 @@
   border-radius: 8px;
   padding-top: 12px;
   padding-bottom: 24px;
-  margin-bottom: 80px; 
 
   .title {
     font-size: 200%;
@@ -49,7 +52,8 @@
   }
   .cause{
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    line-height: 100%;
   }
   .number {
     font-family: $headline-font;
